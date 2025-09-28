@@ -1,0 +1,110 @@
+:root {
+    --font-color-light: #fff;
+    --background-clr-light: rgb(204, 222, 243);
+    --container-clr: rgb(132, 139, 225);
+    --container-body-clr: #fff;
+}
+
+* {
+    padding: none;
+    margin: none;
+    box-sizing: border-box;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+body {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-clr-light);
+}
+
+.container {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
+}
+
+.container-head {
+    height: 50px;
+    width: 100%;
+    background-color: var(--container-clr);
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-body {
+    width: 100%;
+    background-color: var(--container-body-clr);
+    height: 300px;
+    overflow-y: auto;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container-body .list-container {
+    position: relative;
+}
+
+.list-container .list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.list-items .list-item .task-body {
+    list-style-type: none;
+    display: flex;
+    border: 2px solid #000;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.task-name, .task-date {
+    margin: 0;
+}
+
+.task-name {
+    font-size: 1.3rem;
+    background-color: red;
+    font-weight: 500;
+}
+
+.task-date {
+    font-size: 0.8rem;
+}
+
+.btn-container {
+    position: relative;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-new-task {
+    position: sticky;
+    bottom: 0;
+    transform: translate(50%, 50%);
+    width: 50%;
+    height: 35px;
+    border-radius: 50px;    
+}
+
+
+
