@@ -9,15 +9,15 @@ export function toggleTaskControls() {
     })
 
     function showOrHideControls(activeContainer) {
-        let {btnContainerId} = activeContainer.dataset;
+        // const {btnContainerId} = activeContainer.dataset;
 
-        if (activeBtnContainer === btnContainerId) {
+        if (activeBtnContainer === activeContainer) {
             activeContainer.classList.add('hidden');
             activeBtnContainer = null;
         } else {
             document.querySelectorAll('.btn-container').forEach((container) => container.classList.add('hidden'));
             activeContainer.classList.remove('hidden');
-            activeBtnContainer = btnContainerId;
+            activeBtnContainer = activeContainer;
         }
     }
 }
