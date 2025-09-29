@@ -91,7 +91,18 @@ body {
     bottom: 0;
     display: flex;
     justify-content: space-between;
-    display: block;
+    width: 100%;
+}
+
+.btn-container button {
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 3px;
+}
+
+.btn-container button svg {
+    width: 13px;
+    height: 13px;
 }
 
 .hidden {
