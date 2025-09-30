@@ -1,39 +1,13 @@
-const tasks = [
-    {
-        listId: 'task-1',
-        name: 'Eat food',
-        date: 'Today, 5:00pm'
-    },
-    {
-        listId: 'task-2',
-        name: 'Wash plates',
-        date: 'Tomorrow, 2:00pm'
-    },
-    {
-        listId: 'task-3',
-        name: 'Read books',
-        date: 'Next week, 12:00pm'
-    },
-    {
-        listId: 'task-4',
-        name: 'Wash clothes',
-        date: 'Next year, 12:00pm'
-    },
-    {
-        listId: 'task-5',
-        name: 'Cook soup',
-        date: 'Wednesday, 12:00pm'
-    }
-];
+import { tasks } from './tasks.js'
 
 export function displayTasks() {
 
     tasks.forEach((task) => {
-        let {name, date} = task;
+        let {name, date, listId} = task;
         let tasksHTML;
 
         tasksHTML = `
-        <li class="list-item" data-list-id="list-1">
+        <li class="list-item" data-list-id="${listId}">
             <div class="task-body">
                 <div class="task">
                     <p class="task-name">${name}</p>
