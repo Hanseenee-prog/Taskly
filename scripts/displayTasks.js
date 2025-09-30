@@ -1,4 +1,5 @@
-import { tasks } from './tasks.js'
+import { tasks } from './tasks.js';
+import { deleteTask } from './taskControls.js';
 
 export function displayTasks() {
 
@@ -23,7 +24,7 @@ export function displayTasks() {
             
             <!-- control-buttons -->
             <div class="btn-container hidden" data-btn-container-id="1">
-                <button class="list-btn">
+                <button class="list-btn" id="deleteBtn" onclick="${deleteTask(listId)}">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 7l16 0" /> 
                         <path d="M10 11l0 6" /> <path d="M14 11l0 6" /> 
                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /> 
