@@ -1,6 +1,6 @@
-import { tasks } from './tasks.js';
-import { deleteTask } from './taskControls.js';
-import { toggleTaskControls } from './toggleBtn.js';
+import { tasks } from '../tasks.js';
+import { deleteTask, editTask } from '../taskControls.js';
+import { toggleTaskControls } from '../toggleBtn.js';
 
 export function displayTasks() {
     document.querySelector('#listItems').innerHTML = "";
@@ -34,7 +34,7 @@ export function displayTasks() {
                     </svg>
                 </button>
                 
-                <button class="list-btn js-list-btn">
+                <button class="list-btn js-edit-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M17 3a2.85 2.85 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                     </svg>
@@ -53,4 +53,5 @@ export function displayTasks() {
     })
     toggleTaskControls();
     deleteTask();
+    editTask();
 }

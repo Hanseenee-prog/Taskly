@@ -1,3 +1,3 @@
-import { displayTasks } from './displayTasks.js';
+import { displayTasks } from './display/displayTasks.js';
 
 displayTasks();
