@@ -19,24 +19,28 @@ function getListID(btn) {
     return listId;
 }
 
-export function deleteTask() {
-    let matchingTask;
-    
-    document.querySelectorAll('.js-delete-btn').forEach((button) => {
-        
+function attachEventHandlers(selector, handler) {
+    document.querySelectorAll(selector).forEach((button) => {
         button.addEventListener('click', () => {
-            let listId = getListID(button);
+            const listId = getListID(button);
             
-            matchingTask = getMatchingTask(listId);
-            const index = tasks.indexOf(matchingTask);
-            
-            tasks.splice(index, 1);
-            document.querySelector('#listItems').innerHTML = '';
+            const matchingTask = getMatchingTask(listId);
+            handler(matchingTask)
+        });
+    });
+}
 
-            saveToStorage();
-            displayTasks();
-        })
-    })
+export function deleteTask() 
+{
+    attachEventHandlers('.js-delete-btn', (matchingTask) => {
+        const index = tasks.indexOf(matchingTask);
+                
+        tasks.splice(index, 1);
+        document.querySelector('#listItems').innerHTML = '';
+    
+        saveToStorage();
+        displayTasks();
+    });
 }
 
 function editTask() {

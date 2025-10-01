@@ -53,5 +53,4 @@ export function displayTasks() {
     })
     toggleTaskControls();
     deleteTask();
-    
 }
