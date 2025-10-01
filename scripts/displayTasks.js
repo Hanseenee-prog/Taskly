@@ -1,5 +1,5 @@
 import { tasks } from './tasks.js';
-import { deleteTask, getMatchingTask } from './taskControls.js';
+import { deleteTask } from './taskControls.js';
 
 export function displayTasks() {
 

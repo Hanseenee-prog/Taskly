@@ -1,6 +1,6 @@
-import { tasks } from './tasks.js'
+import { tasks, saveToStorage } from './tasks.js'
 
-export function getMatchingTask(listId) {
+function getMatchingTask(listId) {
     let matchingTask;
 
     tasks.forEach((task) => {
@@ -20,13 +20,14 @@ export function deleteTask() {
         button.addEventListener('click', () => {
             const parent = button.parentElement.parentElement;
             const {listId} = parent.dataset;
-            console.log(listId)
             
             matchingTask = getMatchingTask(listId);
             const index = tasks.indexOf(matchingTask);
             
             tasks.splice(index, 1);
             parent.remove();
+            
+            saveToStorage();
         })
     })
 }
