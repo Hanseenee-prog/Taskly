@@ -1,6 +1,6 @@
 import { tasks } from './tasks.js'
 
-export function deleteTask(listId) {
+export function getMatchingTask(listId) {
     let matchingTask;
 
     tasks.forEach((task) => {
@@ -8,5 +8,25 @@ export function deleteTask(listId) {
             matchingTask = task
         };
     })
-    console.log(matchingTask)
+
+    return matchingTask;
+}
+
+export function deleteTask() {
+    let matchingTask;
+    
+    document.querySelectorAll('#deleteBtn').forEach((button) => {
+        
+        button.addEventListener('click', () => {
+            const parent = button.parentElement.parentElement;
+            const {listId} = parent.dataset;
+            console.log(listId)
+            
+            matchingTask = getMatchingTask(listId);
+            const index = tasks.indexOf(matchingTask);
+            
+            tasks.splice(index, 1);
+            parent.remove();
+        })
+    })
 }
