@@ -1,4 +1,5 @@
 import { tasks, saveToStorage } from './tasks.js'
+import { displayTasks } from './displayTasks.js';
 
 function getMatchingTask(listId) {
     let matchingTask;
@@ -12,22 +13,32 @@ function getMatchingTask(listId) {
     return matchingTask;
 }
 
+function getListID(btn) {
+    const parent = btn.parentElement.parentElement;
+    const {listId} = parent.dataset;
+    return listId;
+}
+
 export function deleteTask() {
     let matchingTask;
     
-    document.querySelectorAll('#deleteBtn').forEach((button) => {
+    document.querySelectorAll('.js-delete-btn').forEach((button) => {
         
         button.addEventListener('click', () => {
-            const parent = button.parentElement.parentElement;
-            const {listId} = parent.dataset;
+            let listId = getListID(button);
             
             matchingTask = getMatchingTask(listId);
             const index = tasks.indexOf(matchingTask);
             
             tasks.splice(index, 1);
-            parent.remove();
-            
+            document.querySelector('#listItems').innerHTML = '';
+
             saveToStorage();
+            displayTasks();
         })
     })
+}
+
+function editTask() {
+    
 }

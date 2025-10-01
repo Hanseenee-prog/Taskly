@@ -1,7 +1,7 @@
 let activeBtnContainer = null;
 
 export function toggleTaskControls() {    
-    document.querySelectorAll('#listToggler').forEach((toggler) => {
+    document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
         toggler.addEventListener('click', () => {
             const parent = toggler.parentElement.parentElement;
             showOrHideControls(parent.querySelector('.btn-container'))

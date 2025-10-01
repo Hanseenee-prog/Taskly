@@ -1,8 +1,10 @@
 import { tasks } from './tasks.js';
 import { deleteTask } from './taskControls.js';
+import { toggleTaskControls } from './toggleBtn.js';
 
 export function displayTasks() {
-
+    document.querySelector('#listItems').innerHTML = "";
+    
     tasks.forEach((task) => {
         let {name, date, listId} = task;
         let tasksHTML;
@@ -15,7 +17,7 @@ export function displayTasks() {
                     <p class="task-date">${date}</p>
                 </div>
 
-                <span class="list-toggler" id="listToggler">
+                <span class="list-toggler js-list-toggler" id="listToggler">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
                     </svg>
@@ -24,7 +26,7 @@ export function displayTasks() {
             
             <!-- control-buttons -->
             <div class="btn-container hidden" data-btn-container-id="1">
-                <button class="list-btn js-list-btn" id="deleteBtn">
+                <button class="list-btn js-delete-btn" id="deleteBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 7l16 0" /> 
                         <path d="M10 11l0 6" /> <path d="M14 11l0 6" /> 
                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /> 
@@ -49,5 +51,7 @@ export function displayTasks() {
 
         document.querySelector('#listItems').innerHTML += tasksHTML;
     })
+    toggleTaskControls();
     deleteTask();
+    
 }
