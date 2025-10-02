@@ -26,15 +26,15 @@ function attachEventHandlers(selector, handler) {
             const listId = getListID(button);
             
             const matchingTask = getMatchingTask(listId);
-            handler(matchingTask)
+            handler(matchingTask, listId)
         });
     });
 }
 
 export function deleteTask() 
 {
-    attachEventHandlers('.js-delete-btn', (matchingTask) => {
-        const index = tasks.indexOf(matchingTask);
+    attachEventHandlers('.js-delete-btn', (_matchingTask, listId) => {
+        const index = tasks.findIndex(task => task.listId === listId);
                 
         tasks.splice(index, 1);
         document.querySelector('#listItems').innerHTML = '';
@@ -45,7 +45,7 @@ export function deleteTask()
 }
 
 export function editTask() {
-    attachEventHandlers('.js-edit-btn', (matchingTask) => {
+    attachEventHandlers('.js-edit-btn', (matchingTask, _listId) => {
         updateTask(matchingTask);
     })
 }

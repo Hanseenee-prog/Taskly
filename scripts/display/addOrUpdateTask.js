@@ -27,6 +27,7 @@ function addOrUpdateTask(name, time, date) {
   document.querySelector('#addOrEditTask').innerHTML = html;
   document.querySelector('.list-container').classList.toggle('hidden');
   document.querySelector('.add-new-task').classList.toggle('hidden');
+  console.log(tasks)
 }
 
 export function updateTask(matchingTask) {
@@ -59,11 +60,18 @@ export function addTask() {
           let timeValue = document.getElementById('taskTime').value;
           let dateValue = document.getElementById('taskDate').value;
           
-          tasks.push({
-            name: nameValue,
-            time: timeValue,
-            date: dateValue
-          })
+          if(nameValue === '' || timeValue === '' || dateValue === '') {
+            e.preventDefault();
+          } else {
+            tasks.push({
+              listId: `task-${tasks.length + 1}`,
+              name: nameValue,
+              time: timeValue,
+              date: dateValue
+            })
+            console.log(tasks[tasks.length - 1].listId)
+          }
+          
           saveToStorage();
       })
   })
