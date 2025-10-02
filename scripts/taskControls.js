@@ -1,5 +1,6 @@
 import { tasks, saveToStorage } from './tasks.js'
 import { displayTasks } from './display/displayTasks.js';
+import { updateTask } from './display/addOrUpdateTask.js';
 
 function getMatchingTask(listId) {
     let matchingTask;
@@ -45,7 +46,6 @@ export function deleteTask()
 
 export function editTask() {
     attachEventHandlers('.js-edit-btn', (matchingTask) => {
-        
-        
+        updateTask(matchingTask);
     })
 }

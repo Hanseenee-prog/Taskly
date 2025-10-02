@@ -1,12 +1,13 @@
 import { tasks } from '../tasks.js';
 import { deleteTask, editTask } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
+//import { addTask } from './display/addOrUpdateTask.js';
 
 export function displayTasks() {
     document.querySelector('#listItems').innerHTML = "";
     
     tasks.forEach((task) => {
-        let {name, date, listId} = task;
+        let {name, time, date, listId} = task;
         let tasksHTML;
 
         tasksHTML = `
@@ -14,7 +15,7 @@ export function displayTasks() {
             <div class="task-body">
                 <div class="task">
                     <p class="task-name">${name}</p>
-                    <p class="task-date">${date}</p>
+                    <p class="task-date">${date}, ${time}</p>
                 </div>
 
                 <span class="list-toggler js-list-toggler" id="listToggler">
@@ -41,8 +42,8 @@ export function displayTasks() {
                 </button>
                 
                 <button class="list-btn js-list-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="roundppp
+                        <pp points="20 6 9 17 4 p"></polyline>
                     </svg>
                 </button>
             </div>
@@ -54,4 +55,5 @@ export function displayTasks() {
     toggleTaskControls();
     deleteTask();
     editTask();
+    
 }
