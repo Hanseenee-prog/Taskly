@@ -1,6 +1,18 @@
 import { saveToStorage, tasks } from '../tasks.js';
 import { displayTasks } from './displayTasks.js'
 
+function showFormView() {
+  document.querySelector('#addOrEditTask').classList.remove('hidden');
+  document.querySelector('.list-container').classList.add('hidden');
+  document.querySelector('.add-new-task').classList.add('hidden');
+}
+
+function showListView() {
+  document.querySelector('#addOrEditTask').classList.add('hidden');
+  document.querySelector('.list-container').classList.remove('hidden');
+  document.querySelector('.add-new-task').classList.remove('hidden');
+}
+
 function handleDialogBoxes() {
   const dialogBox = document.querySelector('.dialog-box');
   
@@ -13,9 +25,7 @@ function handleDialogBoxes() {
   
   document.querySelector('#yes').addEventListener('click', () => {
     dialogBox.close();
-    document.querySelector('#addOrEditTask').classList.toggle('hidden');
-    document.querySelector('.list-container').classList.toggle('hidden');
-  document.querySelector('.add-new-task').classList.toggle('hidden');
+    showListView();
   });
   document.querySelector('#no').addEventListener('click', () => {
     dialogBox.close();
@@ -46,9 +56,7 @@ function addOrUpdateTask(name, time, date) {
     </form>
   `;
   
-  document.querySelector('#addOrEditTask').innerHTML = html;
-  document.querySelector('.list-container').classList.toggle('hidden');
-  document.querySelector('.add-new-task').classList.toggle('hidden');
+  showFormView();
   handleDialogBoxes();
 }
 
