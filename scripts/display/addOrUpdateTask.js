@@ -14,8 +14,8 @@ function handleDialogBoxes() {
   document.querySelector('#yes').addEventListener('click', () => {
     dialogBox.close();
     document.querySelector('#addOrEditTask').classList.toggle('hidden');
-    document.querySelector('.list-container').classList.remove('hidden');
-  document.querySelector('.add-new-task').classList.add('hidden');
+    document.querySelector('.list-container').classList.toggle('hidden');
+  document.querySelector('.add-new-task').classList.toggle('hidden');
   });
   document.querySelector('#no').addEventListener('click', () => {
     dialogBox.close();
@@ -47,8 +47,8 @@ function addOrUpdateTask(name, time, date) {
   `;
   
   document.querySelector('#addOrEditTask').innerHTML = html;
-  document.querySelector('.list-container').classList.add('hidden');
-  document.querySelector('.add-new-task').classList.remove('hidden');
+  document.querySelector('.list-container').classList.toggle('hidden');
+  document.querySelector('.add-new-task').classList.toggle('hidden');
   handleDialogBoxes();
 }
 
