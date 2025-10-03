@@ -3,6 +3,9 @@
     --background-clr-light: rgb(204, 222, 243);
     --container-head-clr-light: rgb(132, 139, 225);
     --container-body-clr: #fff;
+    --delete-btn-clr-light: #f24f4f;
+    --edit-btn-clr-light: #7256e6;
+    --done-btn-clr-light: rgb(46, 166, 9);
 }
 
 * {
@@ -38,6 +41,7 @@ body {
     background-color: var(--container-head-clr-light);
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .container-body {
