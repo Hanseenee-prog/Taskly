@@ -55,7 +55,8 @@ function addOrUpdateTask(name, time, date) {
       <input type='submit' value='Update Task' class='update-task-btn add-task-btn'>
     </form>
   `;
-  
+  document.querySelector('#addOrEditTask').innerHTML = html;
+
   showFormView();
   handleDialogBoxes();
 }
