@@ -27,7 +27,7 @@ export function displayTasks() {
             
             <!-- control-buttons -->
             <div class="btn-container hidden" data-btn-container-id="1">
-                <button class="list-btn js-delete-btn" id="deleteBtn">
+                <button class="list-btn delete-btn js-delete-btn" id="deleteBtn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" > <path d="M4 7l16 0" /> 
                         <path d="M10 11l0 6" /> <path d="M14 11l0 6" /> 
                         <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /> 
@@ -35,13 +35,13 @@ export function displayTasks() {
                     </svg>
                 </button>
                 
-                <button class="list-btn js-edit-btn">
+                <button class="list-btn edit-btn js-edit-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M17 3a2.85 2.85 0 0 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
                     </svg>
                 </button>
                 
-                <button class="list-btn js-done-with-task-btn">
+                <button class="list-btn done-btn js-done-with-task-btn">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20 6L9 17L4 12" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>

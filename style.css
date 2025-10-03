@@ -6,6 +6,7 @@
     --delete-btn-clr-light: #f24f4f;
     --edit-btn-clr-light: #7256e6;
     --done-btn-clr-light: rgb(46, 166, 9);
+    --fill-clr-light: #fff;
 }
 
 * {
@@ -122,11 +123,27 @@ body {
     border-radius: 50px;
     cursor: pointer;
     margin: 3px;
+    outline: none;
+    border: none;
 }
 
 .btn-container button svg {
     width: 13px;
     height: 13px;
+    fill: var(--fill-clr-light);
+    stroke: #8f8e8e;
+}
+
+.delete-btn {
+    background-color: var(--delete-btn-clr-light);
+}
+
+.edit-btn {
+    background-color: var(--edit-btn-clr-light);
+}
+
+.done-btn {
+    background-color: var(--done-btn-clr-light);
 }
 
 .hidden {
