@@ -1,9 +1,11 @@
 export let tasks;
+export let completedTasks;
 
 loadFromStorage();
 
 export function loadFromStorage() {
   tasks = JSON.parse(localStorage.getItem('tasks'));
+  completedTasks = JSON.parse(localStorage.getItem('completedTasks'));
 
   if (!tasks) {
       tasks = [{
@@ -33,8 +35,20 @@ export function loadFromStorage() {
     date: '2025-10-08'      
 }];
   }
+  
+  if (!completedTasks) {
+    completedTasks = [
+        {
+            listId: 'task-1',
+            name: 'Eat food',
+            time: '05:00',
+            date: '2025-12-13'  
+        }
+    ];
+  }
 }
 
 export function saveToStorage() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
+  localStorage.setItem('completedTasks', JSON.stringify(completedTasks));
 }

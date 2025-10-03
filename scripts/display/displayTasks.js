@@ -1,5 +1,5 @@
-import { tasks } from '../tasks.js';
-import { deleteTask, editTask } from '../taskControls.js';
+import { tasks, completedTasks } from '../tasks.js';
+import { deleteTask, editTask, doneWithTask } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
 //import { addTask } from './display/addOrUpdateTask.js';
 
@@ -41,7 +41,7 @@ export function displayTasks() {
                     </svg>
                 </button>
                 
-                <button class="list-btn js-list-btn">
+                <button class="list-btn js-done-with-task-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="roundppp
                         <pp points="20 6 9 17 4 p"></polyline>
                     </svg>
@@ -55,5 +55,34 @@ export function displayTasks() {
     toggleTaskControls();
     deleteTask();
     editTask();
+    doneWithTask();
+}
+
+export function displayCompletedTasks() {
+    document.querySelector('.completed-tasks').innerHTML = "";
     
+    completedTasks.forEach((task) => {
+        let {name, time, date, listId} = task;
+        let completedTasksHTML;
+
+        completedTasksHTML = `
+        <li class="completed-list-item" data-list-id="${listId}">
+            <div class="task-body">
+                <div class="task">
+                    <p class="task-name">${name}</p>
+                    <p class="task-date">${date}, ${time}</p>
+                </div>
+
+                <span class="list-toggler js-list-toggler" id="listToggler">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                    </svg>
+                </span>
+            </div>
+        </li>
+        `;
+        
+        document.querySelector('.completed-tasks').innerHTML += completedTasksHTML;
+    })
+    ;
 }
