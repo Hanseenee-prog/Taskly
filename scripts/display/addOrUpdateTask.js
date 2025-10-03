@@ -1,8 +1,27 @@
 import { saveToStorage, tasks } from '../tasks.js';
 import { editTask } from '../taskControls.js';
 
+function handleDialogBoxes() {
+  const dialogBox = document.querySelector('.dialog-box');
+  
+    document.querySelectorAll('.close').forEach((closeBtn) => {
+        closeBtn.addEventListener('click', () => {
+            console.log(dialogBox)
+            dialogBox.showModal()
+        })
+    })
+    
+    document.querySelector('#yes').addEventListener('click', () => {
+      
+    });
+    document.querySelector('#no').addEventListener('click', () => {
+      dialogBox.close();
+    })
+}
+
 function addOrUpdateTask(name, time, date) {
   const html = `
+    <button class='close'>Close</button>
     <form id='addOrUpdateTask'>
       <input type="text" placeholder="task name" 
         id='taskName' 
@@ -27,7 +46,7 @@ function addOrUpdateTask(name, time, date) {
   document.querySelector('#addOrEditTask').innerHTML = html;
   document.querySelector('.list-container').classList.toggle('hidden');
   document.querySelector('.add-new-task').classList.toggle('hidden');
-  console.log(tasks)
+  handleDialogBoxes();
 }
 
 export function updateTask(matchingTask) {
