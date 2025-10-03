@@ -1,7 +1,7 @@
 :root {
     --font-color-light: #fff;
     --background-clr-light: rgb(204, 222, 243);
-    --container-clr: rgb(132, 139, 225);
+    --container-head-clr-light: rgb(132, 139, 225);
     --container-body-clr: #fff;
 }
 
@@ -35,7 +35,7 @@ body {
 .container-head {
     height: 50px;
     width: 100%;
-    background-color: var(--container-clr);
+    background-color: var(--container-head-clr-light);
     display: flex;
     justify-content: space-between;
 }
