@@ -1,22 +1,23 @@
 import { saveToStorage, tasks } from '../tasks.js';
-import { editTask } from '../taskControls.js';
+import { displayTasks } from './displayTasks.js'
 
 function handleDialogBoxes() {
   const dialogBox = document.querySelector('.dialog-box');
   
-    document.querySelectorAll('.close').forEach((closeBtn) => {
-        closeBtn.addEventListener('click', () => {
-            console.log(dialogBox)
-            dialogBox.showModal()
-        })
-    })
-    
-    document.querySelector('#yes').addEventListener('click', () => {
-      
-    });
-    document.querySelector('#no').addEventListener('click', () => {
-      dialogBox.close();
-    })
+  document.querySelectorAll('.close').forEach((closeBtn) => {
+      closeBtn.addEventListener('click', () => {
+          console.log(dialogBox)
+          dialogBox.showModal();
+      })
+  })
+  
+  document.querySelector('#yes').addEventListener('click', () => {
+    dialogBox.close();
+    Window.reload();
+  });
+  document.querySelector('#no').addEventListener('click', () => {
+    dialogBox.close();
+  })
 }
 
 function addOrUpdateTask(name, time, date) {
