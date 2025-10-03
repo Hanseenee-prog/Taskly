@@ -66,7 +66,7 @@ export function updateTask(matchingTask) {
   addOrUpdateTask(name, time, date);
   
   document.querySelectorAll('.update-task-btn').forEach((updateTaskBtn => {
-    updateTaskBtn.addEventListener('click', (e) => {
+    updateTaskBtn.addEventListener('click', () => {
       let nameValue = document.getElementById('taskName').value;
       let timeValue = document.getElementById('taskTime').value;
       let dateValue = document.getElementById('taskDate').value;
