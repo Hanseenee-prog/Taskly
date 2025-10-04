@@ -27,10 +27,11 @@ body {
     justify-content: center;
     align-items: center;
     background-color: var(--background-clr-light);
+    overflow: hidden;
 }
 
 .container {
-    width: 60%;
+    width: clamp(300px, 70vw, 600px);
     display: flex;
     flex-direction: column;
     gap: 50px;
@@ -49,14 +50,19 @@ body {
     width: 100%;
     background-color: var(--container-body-clr);
     height: 300px;
-    overflow-y: auto;
     padding: 20px;
-    overflow-x: hidden;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
 .containers {
     position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    align-self: stretch;
 }
 
 ::-webkit-scrollbar {
@@ -65,17 +71,29 @@ body {
 
 .tab-btn {
     position: absolute;
-    z-index: 100;
-    top: 40%;
+    top: 10%;
+    transform: translateY(-50%);
+    z-index: 10;
+    padding: 8px 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: var(--container-head-clr-light);
+    color: white;
+    font-weight: bold;
 }
 
 .completed-tasks-btn {
-    left: 15%;
+    left: -20px; 
 }
 
 .pending-tasks-btn {
-    right: 15%;
-    display: none;
+    right: -20px;
+}
+
+.containers {
+    height: 100%;
+    position: relative;
 }
 
 .container-body .list-container {
@@ -91,7 +109,8 @@ body {
 .list-items .list-item .task-body {
     list-style-type: none;
     display: flex;
-    border: 2px solid #000;
+    border: 2px solid #d6d;
+    background: #f2f7fc;
     justify-content: space-between;
     align-items: center;
     border-radius: 10px;
@@ -103,7 +122,6 @@ body {
 
 .task-name {
     font-size: 1.3rem;
-    background-color: red;
     font-weight: 500;
 }
 
@@ -124,26 +142,40 @@ body {
     cursor: pointer;
     margin: 3px;
     outline: none;
-    border: none;
+    background-color: #fff;
 }
 
 .btn-container button svg {
-    width: 13px;
-    height: 13px;
-    fill: var(--fill-clr-light);
-    stroke: #8f8e8e;
+    width: 16px;
+    height: auto;
+    stroke-width: 4px;
 }
 
 .delete-btn {
-    background-color: var(--delete-btn-clr-light);
+    border: 2px solid var(--delete-btn-clr-light);
+}
+
+.delete-btn svg {
+    fill: var(--delete-btn-clr-light);
+    stroke: var(--delete-btn-clr-light);
 }
 
 .edit-btn {
-    background-color: var(--edit-btn-clr-light);
+    border: 2px solid var(--edit-btn-clr-light);
+}
+
+.edit-btn svg {
+    fill: var(--edit-btn-clr-light);
+    stroke: var(--edit-btn-clr-light);
 }
 
 .done-btn {
-    background-color: var(--done-btn-clr-light);
+    border: 2px solid var(--done-btn-clr-light);
+}
+
+.done-btn svg {
+    fill: var(--done-btn-clr-light);
+    stroke: var(--done-btn-clr-light);
 }
 
 .hidden {
@@ -151,26 +183,37 @@ body {
 }
 
 .add-new-task {
-    position: sticky;
-    bottom: 0;
-    transform: translate(50%, 50%);
-    width: 50%;
-    height: 35px;
-    border-radius: 50px;    
+    position: absolute;
+    bottom: -9%;
+    width: clamp(80px, 150px, 250px);
+    height: clamp(50px, 35px, 30px);
+    border-radius: 50px;
+    z-index: 10;
+    background: var(--container-head-clr-light);
+    cursor: pointer;
+    border: none;
 }
 
-.slide-in {
-    right: 0% !important;
+.expand-in {
+    width: 100% !important;
     opacity: 1 !important;
 }
 
-.completed-tasks {
-    width: 100%;
+.completed-tasks-container {
+    width: 0%;
     height: 100%;
-    background-color: var(--container-body-clr);
+    background-color: #6bcb77;
     position: absolute;
     top: 0%;
-    right: -120%;
-    transition: right 1s ease, opacity 2s ease;
+    left: 0%;
+    transition: width 0.5s ease, opacity 0.5s ease;
     opacity: 0;
+    padding: 20px;
+}
+
+.completed-tasks {
+    border: 2px solid blue;
+    height: 100%;
+    display: grid;
+    place-items: center;
 }

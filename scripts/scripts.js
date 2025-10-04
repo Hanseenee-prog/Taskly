@@ -11,14 +11,14 @@ function completedTasksAnimation() {
   let activeTab = pendingTasksBtn.id;
 
   completedTasksBtn.addEventListener('click', () => {
-    document.querySelector('.completed-tasks').classList.toggle('slide-in');
+    document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     completedTasksBtn.style.display = 'none';
     pendingTasksBtn.style.display = 'block';
     activeTab = pendingTasksBtn.id;
   });
 
   pendingTasksBtn.addEventListener('click', () => {
-    document.querySelector('.completed-tasks').classList.toggle('slide-in');
+    document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     pendingTasksBtn.style.display = 'none';
     completedTasksBtn.style.display = 'block';
     activeTab = completedTasksBtn.id;
