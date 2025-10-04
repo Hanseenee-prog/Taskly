@@ -1,5 +1,5 @@
 import { saveToStorage, tasks } from '../tasks.js';
-
+import { pendingTasksBtn, completedTasksBtn } from '../scripts.js';
 
 function showFormView() {
   document.querySelector('#addOrEditTask').classList.remove('hidden');
@@ -25,6 +25,7 @@ function handleDialogBoxes() {
   
   document.querySelector('#yes').addEventListener('click', () => {
     dialogBox.close();
+    completedTasksBtn.style.display = 'block';
     showListView();
   });
   document.querySelector('#no').addEventListener('click', () => {
@@ -56,12 +57,14 @@ function addOrUpdateTask(name, time, date) {
     </form>
   `;
   document.querySelector('#addOrEditTask').innerHTML = html;
-
+  
   showFormView();
   handleDialogBoxes();
 }
 
 export function updateTask(matchingTask) {
+  completedTasksBtn.style.display = 'none';
+  
   const {name, time, date} = matchingTask;
   addOrUpdateTask(name, time, date);
   
@@ -76,6 +79,8 @@ export function updateTask(matchingTask) {
         time: timeValue,
         date: dateValue
       });
+      
+      completedTasksBtn.style.display = 'block';
       saveToStorage();
     })
   }))
@@ -85,6 +90,7 @@ export function addTask() {
   document.querySelector('#addNewTask').addEventListener('click', () => {
       addOrUpdateTask('','','');
       document.querySelector('.add-task-btn').value = 'Add Task';
+      completedTasksBtn.style.display = 'none';
       
       document.querySelector('.add-task-btn').addEventListener('click', () => {
           let nameValue = document.getElementById('taskName').value;

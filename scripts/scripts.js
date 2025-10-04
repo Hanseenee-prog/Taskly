@@ -1,14 +1,13 @@
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
 import { addTask } from './display/addOrUpdateTask.js';
 
+export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
+export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
 displayTasks();
 addTask();
 
 function completedTasksAnimation() {
-  const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
-  const completedTasksBtn = document.querySelector('.completed-tasks-btn');
-
   let activeTab = pendingTasksBtn.id;
 
   completedTasksBtn.addEventListener('click', () => {
