@@ -13,6 +13,7 @@
     padding: none;
     margin: none;
     box-sizing: border-box;
+    font-family: 'Poppins';
 }
 ul {
     padding: 0;
@@ -106,10 +107,10 @@ body {
     gap: 10px;
 }
 
-.list-items .list-item .task-body {
+.task-body {
     list-style-type: none;
     display: flex;
-    border: 2px solid #d6d;
+    border: 2px solid #afa0a9;
     background: #f2f7fc;
     justify-content: space-between;
     align-items: center;
@@ -178,10 +179,6 @@ body {
     stroke: var(--done-btn-clr-light);
 }
 
-.hidden {
-    display: none;
-}
-
 .add-new-task {
     position: absolute;
     bottom: -9%;
@@ -192,6 +189,11 @@ body {
     background: var(--container-head-clr-light);
     cursor: pointer;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    font-size: 18px;
 }
 
 .expand-in {
@@ -216,4 +218,47 @@ body {
     height: 100%;
     display: grid;
     place-items: center;
+}
+
+/*Add or Edit tasks*/
+form {
+    width: 100%;
+    height: 100%;
+    border: 2px solid black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input {
+    width: 100%;
+    height: 50px;
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+
+.add-task-btn {
+  position: absolute;
+  bottom: -9%; /* same as .add-new-task */
+  width: clamp(80px, 150px, 250px);
+  height: clamp(50px, 35px, 30px);
+  border-radius: 50px;
+  background: var(--container-head-clr-light);
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5%;
+  font-size: 18px;
+  color: var(--font-color-light);
+  font-weight: 500;
+  z-index: 10;
+}
+
+.hidden {
+    display: none;
 }
