@@ -46,7 +46,6 @@ export function displayTasks() {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                       <path d="M20.285 6.707a1 1 0 0 0-1.414-1.414L9 15.164l-3.871-3.871a1 1 0 0 0-1.414 1.414l4.578 4.578a1 1 0 0 0 1.414 0l10.578-10.578z"/>
                     </svg>
-                        </svg>
                     </button>
                 </div>
             </li>
