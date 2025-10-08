@@ -1,5 +1,5 @@
 import { tasks, completedTasks } from '../tasks.js';
-import { deleteTask, editTask, doneWithTask } from '../taskControls.js';
+import { setupTaskControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
 //import { addTask } from './display/addOrUpdateTask.js';
 
@@ -54,9 +54,7 @@ export function displayTasks() {
             document.querySelector('#listItems').innerHTML += tasksHTML;
         })
         toggleTaskControls();
-        deleteTask();
-        editTask();
-        doneWithTask();
+        setupTaskControls();
     }
     else {
         document.querySelector('#listItems').innerHTML = 'You haven\'t added any tasks yet';

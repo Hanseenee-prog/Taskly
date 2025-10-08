@@ -101,7 +101,7 @@ export function addTask() {
             e.preventDefault();
           } else {
             tasks.push({
-              listId: `task-${tasks.length + 1}`,
+              listId: `task-${Date.now}`,
               name: nameValue,
               time: timeValue,
               date: dateValue
