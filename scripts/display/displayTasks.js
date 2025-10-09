@@ -50,7 +50,7 @@ export function displayTasks() {
             </li>
             `;
     
-            document.querySelector('#listItems').innerHTML += tasksHTML;
+            document.querySelector('#listItems').insertAdjacentHTML('beforeend', tasksHTML);
         })
         toggleTaskControls();
         setupTaskControls();
