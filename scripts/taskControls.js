@@ -22,7 +22,7 @@ export function setupTaskControls() {
         const deleteBtn = e.target.closest('.js-delete-btn');
         const editBtn = e.target.closest('.js-edit-btn');
         const doneBtn = e.target.closest('.js-done-with-task-btn');
-        
+        j
         if (!deleteBtn && !editBtn && !doneBtn) return;
         
         const parentTaskEl = e.target.closest('[data-list-id]');
