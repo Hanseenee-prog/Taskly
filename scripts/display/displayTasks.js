@@ -1,7 +1,6 @@
 import { tasks, completedTasks } from '../tasks.js';
 import { setupTaskControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
-//import { addTask } from './display/addOrUpdateTask.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
@@ -88,7 +87,6 @@ export function displayCompletedTasks() {
             
             document.querySelector('.completed-tasks').innerHTML += completedTasksHTML;
         })
-        ;
     } else {
         document.querySelector('.completed-tasks').innerHTML = "You haven't completed any tasks yet."
     }

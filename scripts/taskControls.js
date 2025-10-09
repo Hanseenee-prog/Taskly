@@ -14,7 +14,6 @@ function handleDelete(listId) {
     }
 }
 
-// Main delegation setup
 export function setupTaskControls() {
     const listContainer = document.querySelector('#listItems');
     
