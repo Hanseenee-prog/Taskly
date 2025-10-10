@@ -1,12 +1,12 @@
 :root {
-    --font-color: #fff;
+    --font-color: #2c2b2b;
     --background-clr: linear-gradient(135deg, #1e3c72, #2a5298);
     --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.15);
     --delete-btn-clr: #f24f4f;
     --edit-btn-clr: #7256e6;
     --done-btn-clr: rgb(46, 166, 9);
-    --fill-clr: #fff;
+    --fill-clr: #161616;
 }
 
 /* 🌞 Light Theme Overrides */
@@ -133,14 +133,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     background: rgba(255, 255, 255, 0.2);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 12px;
     padding: 12px 15px;
     backdrop-filter: blur(12px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
