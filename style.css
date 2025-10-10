@@ -1,20 +1,33 @@
 :root {
     --font-color-light: #fff;
-    --background-clr-light: rgb(204, 222, 243);
-    --container-head-clr-light: rgb(132, 139, 225);
-    --container-body-clr: #fff;
+    --background-clr-light: linear-gradient(135deg, #1e3c72, #2a5298);
+    --container-head-clr-light: rgba(132, 139, 225, 0.85);
+    --container-body-clr: rgba(255, 255, 255, 0.15);
     --delete-btn-clr-light: #f24f4f;
     --edit-btn-clr-light: #7256e6;
     --done-btn-clr-light: rgb(46, 166, 9);
     --fill-clr-light: #fff;
 }
 
-* {
-    padding: none;
-    margin: none;
-    box-sizing: border-box;
-    font-family: 'Poppins';
+/* 🌞 Light Theme Overrides */
+.light-theme {
+    --font-color-light: #1a1a1a;
+    --background-clr-light: linear-gradient(135deg, #fdfbfb, #ebedee);
+    --container-head-clr-light: rgba(200, 210, 250, 0.9);
+    --container-body-clr: rgba(255, 255, 255, 0.9);
+    --delete-btn-clr-light: #ff4d4f;
+    --edit-btn-clr-light: #4f6bed;
+    --done-btn-clr-light: #34a853;
+    --fill-clr-light: #000;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
 ul {
     padding: 0;
     margin: 0;
@@ -27,8 +40,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--background-clr-light);
+    background: var(--background-clr-light);
     overflow: hidden;
+    color: var(--font-color-light);
 }
 
 .container {
@@ -41,15 +55,24 @@ body {
 .container-head {
     height: 50px;
     width: 100%;
-    background-color: var(--container-head-clr-light);
+    background: var(--container-head-clr-light);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 15px;
+    color: var(--font-color-light);
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .container-body {
     width: 100%;
-    background-color: var(--container-body-clr);
+    background: var(--container-body-clr);
+    backdrop-filter: blur(15px);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     height: 300px;
     padding: 20px;
     position: relative;
@@ -79,9 +102,15 @@ body {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    background-color: var(--container-head-clr-light);
-    color: white;
+    background: var(--container-head-clr-light);
+    color: var(--font-color-light);
     font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+}
+
+.tab-btn:hover {
+    transform: translateY(-50%) scale(1.1);
 }
 
 .completed-tasks-btn {
@@ -92,51 +121,53 @@ body {
     right: -20px;
 }
 
-.containers {
-    height: 100%;
-    position: relative;
-}
-
-.container-body .list-container {
-    position: relative;
-}
-
 .list-container .list-items {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
+/* TASK ITEM */
 .task-body {
     list-style-type: none;
     display: flex;
-    border: 2px solid #afa0a9;
-    background: #f2f7fc;
     justify-content: space-between;
     align-items: center;
-    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 12px;
+    padding: 12px 15px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-body:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
 .task-name, .task-date {
     margin: 0;
+    color: var(--font-color-light);
 }
 
 .task-name {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
 }
 
 .task-date {
     font-size: 0.8rem;
+    opacity: 0.85;
 }
 
 .btn-container {
-    position: relative;
-    bottom: 0;
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    z-index: 100;
+    gap: 8px;
 }
 
 .btn-container button {
@@ -144,49 +175,61 @@ body {
     cursor: pointer;
     margin: 3px;
     outline: none;
-    background-color: #fff;
+    background: rgba(255,255,255,0.15);
+    border: 2px solid transparent;
+    backdrop-filter: blur(10px);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 10px;
+}
+
+.btn-container button:hover {
+    transform: scale(1.05);
 }
 
 .btn-container button svg {
     width: 16px;
     height: auto;
-    stroke-width: 4px;
+    stroke-width: 3px;
 }
 
+/* Button colors */
 .delete-btn {
-    border: 2px solid var(--delete-btn-clr-light);
+    border-color: var(--delete-btn-clr-light);
 }
 
 .delete-btn svg {
-    fill: var(--delete-btn-clr-light);
     stroke: var(--delete-btn-clr-light);
+    fill: var(--delete-btn-clr-light);
 }
 
 .edit-btn {
-    border: 2px solid var(--edit-btn-clr-light);
+    border-color: var(--edit-btn-clr-light);
 }
 
 .edit-btn svg {
-    fill: var(--edit-btn-clr-light);
     stroke: var(--edit-btn-clr-light);
+    fill: var(--edit-btn-clr-light);
 }
 
 .done-btn {
-    border: 2px solid var(--done-btn-clr-light);
+    border-color: var(--done-btn-clr-light);
 }
 
 .done-btn svg {
-    fill: var(--done-btn-clr-light);
     stroke: var(--done-btn-clr-light);
+    fill: var(--done-btn-clr-light);
 }
 
-.add-new-task {
+/* Add new task button */
+.add-new-task, .add-task-btn {
     position: absolute;
     bottom: -9%;
     width: clamp(80px, 150px, 250px);
     height: clamp(50px, 35px, 30px);
     border-radius: 50px;
-    z-index: 10;
     background: var(--container-head-clr-light);
     cursor: pointer;
     border: none;
@@ -195,6 +238,10 @@ body {
     justify-content: center;
     gap: 5%;
     font-size: 18px;
+    color: var(--font-color-light);
+    font-weight: 600;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    z-index: 10;
 }
 
 .expand-in {
@@ -205,59 +252,49 @@ body {
 .completed-tasks-container {
     width: 0%;
     height: 100%;
-    background-color: #6bcb77;
+    background: rgba(107, 203, 119, 0.2);
     position: absolute;
     top: 0%;
     left: 0%;
     transition: width 0.5s ease, opacity 0.5s ease;
     opacity: 0;
     padding: 20px;
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
 }
 
 .completed-tasks {
-    border: 2px solid blue;
     height: 100%;
     display: grid;
     place-items: center;
+    color: var(--font-color-light);
+    font-weight: 500;
 }
 
-/*Add or Edit tasks*/
+/* Add or Edit tasks form */
 form {
     width: 100%;
     height: 100%;
-    border: 2px solid black;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
 
 form input {
     width: 100%;
     height: 50px;
-    border: 2px solid lightgray;
+    border: 2px solid rgba(255,255,255,0.4);
     border-radius: 10px;
-}
-
-.add-task-btn {
-  position: absolute;
-  bottom: -9%; /* same as .add-new-task */
-  width: clamp(80px, 150px, 250px);
-  height: clamp(50px, 35px, 30px);
-  border-radius: 50px;
-  background: var(--container-head-clr-light);
-  cursor: pointer;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  font-size: 18px;
-  color: var(--font-color-light);
-  font-weight: 500;
-  z-index: 10;
+    padding: 0 10px;
+    background: rgba(255,255,255,0.15);
+    color: var(--font-color-light);
 }
 
 .hidden {
