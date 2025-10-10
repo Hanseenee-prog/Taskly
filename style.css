@@ -1,6 +1,6 @@
 :root {
     --font-color: #dedede;
-    --background-clr: linear-gradient(135deg, rgb(154, 191, 251)q, rgba(183, 209, 241, 0));
+    --background-image: url('imgs/3d8797deef62a5812b394ea3a1a762a0.jpg');
     --container-accent-clr: rgba(127, 134, 218, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #cd2222;
@@ -41,16 +41,9 @@ body {
     justify-content: center;
     align-items: center;
     /* background: var(--background-clr); */
-    background: url('imgs/3d8797deef62a5812b394ea3a1a762a0.jpg') center/cover no-repeat;
+    background: var(--background-image) center/cover no-repeat;
     overflow: hidden;
     color: var(--font-color);
-}
-
-body::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(142, 142, 142, 0.133);
 }
 
 .container {
