@@ -41,11 +41,16 @@ body {
     justify-content: center;
     align-items: center;
     /* background: var(--background-clr); */
-    background-image: url('imgs/3d8797deef62a5812b394ea3a1a762a0.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('imgs/3d8797deef62a5812b394ea3a1a762a0.jpg') center/cover no-repeat;
     overflow: hidden;
     color: var(--font-color);
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(142, 142, 142, 0.133);
 }
 
 .container {
