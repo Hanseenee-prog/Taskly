@@ -37,21 +37,30 @@ function addOrUpdateTask(name, time, date) {
   const html = `
     <button class='close'>Close</button>
     <form id='addOrUpdateTask'>
-      <input type="text" placeholder="task name" 
-        id='taskName' 
-        value='${name}' required>
-        
-      <input type="time" 
-        name="task-time" 
-        id="taskTime" 
-        value='${time}'
-        required>
-        
-      <input type="date" 
-        name="taskDate"  
-        id="taskDate" 
-        value='${date}'
-        required>
+      <div class="form-input">
+        <label for="taskName">Task name: </label>
+        <input type="text" placeholder="task name" 
+          id='taskName' 
+          value='${name}' required>
+      </div>
+      
+      <div class="form-input">
+        <label for="taskTime">Time for task: </label>
+        <input type="time" 
+          name="task-time" 
+          id="taskTime" 
+          value='${time}'
+          required>
+      </div>
+      
+      <div class="form-input">
+        <label for="taskDate">Date for task: </label>
+        <input type="date" 
+          name="taskDate"  
+          id="taskDate" 
+          value='${date}'
+          required>
+      </div>
       
       <input type='submit' value='Update Task' class='update-task-btn add-task-btn'>
     </form>

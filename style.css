@@ -282,24 +282,46 @@ form {
     height: 100%;
     background: transparent;
     border-radius: 12px;
-    padding: 20px;
+    padding: 10px 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 10px;
-    backdrop-filter: blur(12px);
     box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.form-input {
+    width: 100%;
+    height: 50px;
+}
+
+.form-input label {
+    line-height: 15px;
+    font-size: 13px;
 }
 
 form input {
     width: 100%;
-    height: 50px;
+    height: 35px;
     border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 0 10px;
     background: rgba(255,255,255,0.15);
     color: var(--font-color);
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    padding: 5px;
+    margin: 5px;
+}
+
+.add-task-btn {
+    height: clamp(30px, 25px, 20px);
+    font-size: 16px;
+    bottom: -5%;
 }
 
 .toggle {
