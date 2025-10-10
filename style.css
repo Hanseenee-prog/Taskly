@@ -1,6 +1,6 @@
 :root {
     --font-color: #2c2b2b;
-    --background-clr: linear-gradient(135deg, #5c9ed1, #7b8fc4, #a89cc9);
+    --background-clr: linear-gradient(135deg, #7b8fc4, #b8a9e0);
     --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #f24f4f;
@@ -10,7 +10,7 @@
 }
 
 /* 🌞 Light Theme Overrides */
-.light-theme {
+.dark-theme {
     --font-color: #1a1a1a;
     --background-clr: linear-gradient(135deg, #fdfbfb, #ebedee);
     --container-head-clr: rgba(200, 210, 250, 0.9);
@@ -70,7 +70,7 @@ body {
 .container-body {
     width: 100%;
     background: var(--container-body-clr);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 16px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
