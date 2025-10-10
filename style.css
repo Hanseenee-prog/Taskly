@@ -1,6 +1,6 @@
 :root {
     --font-color: #2c2b2b;
-    --background-clr: linear-gradient(135deg, rgb(154, 191, 251), rgba(183, 209, 241, 0));
+    --background-clr: linear-gradient(135deg, rgb(154, 191, 251)q, rgba(183, 209, 241, 0));
     --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #f24f4f;
