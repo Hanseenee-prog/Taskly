@@ -1,11 +1,11 @@
 :root {
-    --font-color: #2c2b2b;
+    --font-color: #dedede;
     --background-clr: linear-gradient(135deg, rgb(154, 191, 251)q, rgba(183, 209, 241, 0));
-    --container-head-clr: rgba(63, 43, 242, 0.85);
+    --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #f24f4f;
-    --edit-btn-clr: #7256e6;
-    --done-btn-clr: rgb(46, 166, 9);
+    --edit-btn-clr: #84daff;
+    --done-btn-clr: rgb(100, 251, 54);
     --fill-clr: #161616;
 }
 
@@ -40,10 +40,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('imgs/e00afb6af7902382256ee65cb383151e.jpg');
+    /* background: var(--background-clr); */
+    background-image: url('imgs/3d8797deef62a5812b394ea3a1a762a0.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    backdrop-filter: opacity(100px);
     overflow: hidden;
     color: var(--font-color);
 }
