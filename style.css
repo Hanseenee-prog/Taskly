@@ -1,10 +1,10 @@
 :root {
     --font-color: #dedede;
     --background-clr: linear-gradient(135deg, rgb(154, 191, 251)q, rgba(183, 209, 241, 0));
-    --container-head-clr: rgba(132, 139, 225, 0.85);
+    --container-accent-clr: rgba(127, 134, 218, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
-    --delete-btn-clr: #f24f4f;
-    --edit-btn-clr: #84daff;
+    --delete-btn-clr: #cd2222;
+    --edit-btn-clr: #1b1da5;
     --done-btn-clr: rgb(100, 251, 54);
     --fill-clr: #161616;
 }
@@ -13,7 +13,7 @@
 .light-theme {
     --font-color: #1a1a1a;
     --background-clr: linear-gradient(135deg, #fdfbfb, #ebedee);
-    --container-head-clr: rgba(200, 210, 250, 0.9);
+    --container-accent-clr: rgba(200, 210, 250, 0.9);
     --container-body-clr: rgba(255, 255, 255, 0.9);
     --delete-btn-clr: #ff4d4f;
     --edit-btn-clr: #4f6bed;
@@ -58,7 +58,7 @@ body {
 .container-head {
     height: 50px;
     width: 100%;
-    background: var(--container-head-clr);
+    background: var(--container-accent-clr);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     display: flex;
@@ -106,7 +106,7 @@ body {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    background: var(--container-head-clr);
+    background: var(--container-accent-clr);
     color: var(--font-color);
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
@@ -232,7 +232,7 @@ body {
     width: clamp(80px, 150px, 250px);
     height: clamp(50px, 35px, 30px);
     border-radius: 50px;
-    background: var(--container-head-clr);
+    background: var(--container-accent-clr);
     cursor: pointer;
     border: none;
     display: flex;
