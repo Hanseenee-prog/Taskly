@@ -1,24 +1,24 @@
 :root {
-    --font-color-light: #fff;
-    --background-clr-light: linear-gradient(135deg, #1e3c72, #2a5298);
-    --container-head-clr-light: rgba(132, 139, 225, 0.85);
+    --font-color: #fff;
+    --background-clr: linear-gradient(135deg, #1e3c72, #2a5298);
+    --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.15);
-    --delete-btn-clr-light: #f24f4f;
-    --edit-btn-clr-light: #7256e6;
-    --done-btn-clr-light: rgb(46, 166, 9);
-    --fill-clr-light: #fff;
+    --delete-btn-clr: #f24f4f;
+    --edit-btn-clr: #7256e6;
+    --done-btn-clr: rgb(46, 166, 9);
+    --fill-clr: #fff;
 }
 
 /* 🌞 Light Theme Overrides */
 .light-theme {
-    --font-color-light: #1a1a1a;
-    --background-clr-light: linear-gradient(135deg, #fdfbfb, #ebedee);
-    --container-head-clr-light: rgba(200, 210, 250, 0.9);
+    --font-color: #1a1a1a;
+    --background-clr: linear-gradient(135deg, #fdfbfb, #ebedee);
+    --container-head-clr: rgba(200, 210, 250, 0.9);
     --container-body-clr: rgba(255, 255, 255, 0.9);
-    --delete-btn-clr-light: #ff4d4f;
-    --edit-btn-clr-light: #4f6bed;
-    --done-btn-clr-light: #34a853;
-    --fill-clr-light: #000;
+    --delete-btn-clr: #ff4d4f;
+    --edit-btn-clr: #4f6bed;
+    --done-btn-clr: #34a853;
+    --fill-clr: #000;
 }
 
 * {
@@ -40,9 +40,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--background-clr-light);
+    background: var(--background-clr);
     overflow: hidden;
-    color: var(--font-color-light);
+    color: var(--font-color);
 }
 
 .container {
@@ -55,14 +55,14 @@ body {
 .container-head {
     height: 50px;
     width: 100%;
-    background: var(--container-head-clr-light);
+    background: var(--container-head-clr);
     backdrop-filter: blur(10px);
     border-radius: 12px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
-    color: var(--font-color-light);
+    color: var(--font-color);
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -102,8 +102,8 @@ body {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    background: var(--container-head-clr-light);
-    color: var(--font-color-light);
+    background: var(--container-head-clr);
+    color: var(--font-color);
     font-weight: bold;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.2s ease;
@@ -151,7 +151,7 @@ body {
 
 .task-name, .task-date {
     margin: 0;
-    color: var(--font-color-light);
+    color: var(--font-color);
 }
 
 .task-name {
@@ -197,30 +197,30 @@ body {
 
 /* Button colors */
 .delete-btn {
-    border-color: var(--delete-btn-clr-light);
+    border-color: var(--delete-btn-clr);
 }
 
 .delete-btn svg {
-    stroke: var(--delete-btn-clr-light);
-    fill: var(--delete-btn-clr-light);
+    stroke: var(--delete-btn-clr);
+    fill: var(--delete-btn-clr);
 }
 
 .edit-btn {
-    border-color: var(--edit-btn-clr-light);
+    border-color: var(--edit-btn-clr);
 }
 
 .edit-btn svg {
-    stroke: var(--edit-btn-clr-light);
-    fill: var(--edit-btn-clr-light);
+    stroke: var(--edit-btn-clr);
+    fill: var(--edit-btn-clr);
 }
 
 .done-btn {
-    border-color: var(--done-btn-clr-light);
+    border-color: var(--done-btn-clr);
 }
 
 .done-btn svg {
-    stroke: var(--done-btn-clr-light);
-    fill: var(--done-btn-clr-light);
+    stroke: var(--done-btn-clr);
+    fill: var(--done-btn-clr);
 }
 
 /* Add new task button */
@@ -230,7 +230,7 @@ body {
     width: clamp(80px, 150px, 250px);
     height: clamp(50px, 35px, 30px);
     border-radius: 50px;
-    background: var(--container-head-clr-light);
+    background: var(--container-head-clr);
     cursor: pointer;
     border: none;
     display: flex;
@@ -238,7 +238,7 @@ body {
     justify-content: center;
     gap: 5%;
     font-size: 18px;
-    color: var(--font-color-light);
+    color: var(--font-color);
     font-weight: 600;
     box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     z-index: 10;
@@ -267,7 +267,7 @@ body {
     height: 100%;
     display: grid;
     place-items: center;
-    color: var(--font-color-light);
+    color: var(--font-color);
     font-weight: 500;
 }
 
@@ -294,7 +294,7 @@ form input {
     border-radius: 10px;
     padding: 0 10px;
     background: rgba(255,255,255,0.15);
-    color: var(--font-color-light);
+    color: var(--font-color);
 }
 
 .hidden {
