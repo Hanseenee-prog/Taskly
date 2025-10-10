@@ -1,7 +1,7 @@
 :root {
     --font-color: #2c2b2b;
     --background-clr: linear-gradient(135deg, rgb(154, 191, 251)q, rgba(183, 209, 241, 0));
-    --container-head-clr: rgba(132, 139, 225, 0.85);
+    --container-head-clr: rgba(63, 43, 242, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #f24f4f;
     --edit-btn-clr: #7256e6;
@@ -40,7 +40,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--background-clr);
+    background-image: url('imgs/e00afb6af7902382256ee65cb383151e.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: opacity(100px);
     overflow: hidden;
     color: var(--font-color);
 }
