@@ -1,6 +1,6 @@
 :root {
     --font-color: #2c2b2b;
-    --background-clr: linear-gradient(135deg, #1e3c72, #2a5298);
+    --background-clr: linear-gradient(135deg, #4a8fb5, #254a8a);
     --container-head-clr: rgba(132, 139, 225, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.15);
     --delete-btn-clr: #f24f4f;
@@ -71,6 +71,7 @@ body {
     width: 100%;
     background: var(--container-body-clr);
     backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 16px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     height: 300px;
@@ -133,17 +134,17 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 255, 255, 0.2);
+    background: transparent;
     border: 1px solid rgba(255,255,255,0.3);
     border-radius: 12px;
     padding: 12px 15px;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(1px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .task-body:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     box-shadow: 0 6px 15px rgba(0,0,0,0.25);
 }
 
