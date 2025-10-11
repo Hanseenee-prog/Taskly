@@ -319,6 +319,13 @@ form input {
     right: 0;
     padding: 5px;
     margin: 5px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50%;
+}
+
+.close svg {
+    fill: var(--font-color);
 }
 
 .add-task-btn {
