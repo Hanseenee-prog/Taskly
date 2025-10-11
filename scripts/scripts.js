@@ -18,6 +18,7 @@ function completedTasksAnimation() {
   completedTasksBtn.addEventListener('click', () => {
     document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     document.querySelector('.list-container').classList.toggle('slide-out');
+    document.querySelector('#addNewTask').style.display = "none";
     completedTasksBtn.style.display = 'none';
     pendingTasksBtn.style.display = 'block';
     activeTab = pendingTasksBtn.id;
@@ -26,6 +27,7 @@ function completedTasksAnimation() {
   pendingTasksBtn.addEventListener('click', () => {
     document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     document.querySelector('.list-container').classList.toggle('slide-out');
+    document.querySelector('#addNewTask').style.display = "block";
     pendingTasksBtn.style.display = 'none';
     completedTasksBtn.style.display = 'block';
     activeTab = completedTasksBtn.id;

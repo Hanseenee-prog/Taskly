@@ -160,6 +160,7 @@ body::before {
     align-items: stretch;
     gap: 10px;
     height: 250px;
+    text-wrap: nowrap;
 }
 
 .empty-message {
