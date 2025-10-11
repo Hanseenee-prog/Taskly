@@ -141,6 +141,7 @@ body::before {
     align-items: center;
     gap: 10px;
     height: 250px;
+    width: 100%;
 }
 
 /* TASK ITEM */
