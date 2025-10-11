@@ -21,5 +21,5 @@ export function toggleTaskControls() {
 }
 
 export function toggleTheme() {
-    
+    alert('hi')
 }
