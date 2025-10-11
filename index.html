@@ -18,8 +18,37 @@
                 Taskly
             </p>
             <span class="toggle-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="icon icon-clock" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <!-- Central Circle -->
+                    <circle cx="12" cy="12" r="5"/>
+
+                    <!-- Rays as filled rectangles (rotated into position) -->
+                    <!-- Top and Bottom -->
+                    <rect x="11" y="1" width="2" height="3"/>
+                    <rect x="11" y="20" width="2" height="3"/>
+                    
+                    <!-- Left and Right -->
+                    <rect x="1" y="11" width="3" height="2"/>
+                    <rect x="20" y="11" width="3" height="2"/>
+
+                    <!-- Diagonal Rays (rotated rectangles) -->
+                    <!-- Using a group and transforms to position the diagonals cleanly -->
+                    <g transform="rotate(45 12 12)">
+                        <rect x="11" y="1" width="2" height="3"/>
+                        <rect x="11" y="20" width="2" height="3"/>
+                    </g>
+                    <g transform="rotate(90 12 12)">
+                        <rect x="11" y="1" width="2" height="3"/>
+                        <rect x="11" y="20" width="2" height="3"/>
+                    </g>
+                    <g transform="rotate(-45 12 12)">
+                        <rect x="11" y="1" width="2" height="3"/>
+                        <rect x="11" y="20" width="2" height="3"/>
+                    </g>
+                </svg>
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                 </svg>
             </span>
         </div>
