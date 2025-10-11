@@ -308,6 +308,7 @@ form input {
     padding: 0 10px;
     background: rgba(255,255,255,0.15);
     color: var(--font-color);
+    line-height: normal;
 }
 
 .close {
