@@ -111,7 +111,7 @@ body::before {
     flex-direction: column;
 }
 
-.containers {
+.containers, .completed-tasks-container {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
