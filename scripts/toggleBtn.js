@@ -1,5 +1,3 @@
-import { loadFromStorage, saveToStorage } from '../tasks.js';
-
 let activeBtnContainer = null;
 
 export function toggleTaskControls() {    
@@ -22,6 +20,6 @@ export function toggleTaskControls() {
     }
 }
 
-function toggleTheme() {
-
+export function toggleTheme() {
+    
 }

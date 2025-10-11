@@ -1,11 +1,14 @@
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
 import { addTask } from './display/addOrUpdateTask.js';
+import { toggleTheme } from '../toggleBtn.js';
 
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
 displayTasks();
 addTask();
+
+console.log(document.querySelectorAll('theme-toggle-btn svg'));
 
 function completedTasksAnimation() {
   let activeTab = pendingTasksBtn.id;
