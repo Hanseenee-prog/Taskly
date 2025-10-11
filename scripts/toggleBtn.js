@@ -27,9 +27,9 @@ export function toggleTheme() {
 
     document.querySelector('.theme-toggle-btn').addEventListener('click', (e) => {
         if (e.target.id === 'light') {
-            light.style.display = 'none';
+            light.classList.add('hidden');
         } else {
-            dark.style.display = 'none';
+            dark.classList.add('hidden');
         }
     })
 }
