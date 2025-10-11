@@ -7,8 +7,7 @@ export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
 displayTasks();
 addTask();
-
-console.log(document.querySelectorAll('theme-toggle-btn svg'));
+toggleTheme();
 
 function completedTasksAnimation() {
   let activeTab = pendingTasksBtn.id;

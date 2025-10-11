@@ -1,4 +1,5 @@
 let activeBtnContainer = null;
+let currentTheme = 'dark';
 
 export function toggleTaskControls() {    
     document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
@@ -21,5 +22,14 @@ export function toggleTaskControls() {
 }
 
 export function toggleTheme() {
-    alert('hi')
+    const light = document.querySelector('.light');
+    const dark = document.querySelector('.dark');
+
+    document.querySelector('.theme-toggle-btn').addEventListener('click', (e) => {
+        if (e.target.id === 'light') {
+            light.style.display = 'none';
+        } else {
+            dark.style.display = 'none';
+        }
+    })
 }
