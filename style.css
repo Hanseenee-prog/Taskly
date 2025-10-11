@@ -1,6 +1,6 @@
 :root {
     --font-color: #f1ececfd;
-    --background-image: url('imgs/8df61aa963e6d720533a66510a839819.jpg');
+    --background-image: url('imgs/dark-sky.jpg');
     --container-accent-clr: rgba(127, 134, 218, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
     --delete-btn-clr: #cd2222;
@@ -12,7 +12,7 @@
 /* 🌞 Light Theme Overrides */
 .light {
     --font-color: #000000;
-    --background-image: url('imgs/f5b47fc22b4ecf5d87f03160a07a7c61.jpg');
+    --background-image: url('imgs/bright-sky.jpg');
     --container-accent-clr: rgba(118, 127, 222, 0.85);
     --container-body-clr: rgba(186, 183, 183, 0.173);
     --delete-btn-clr: #dc4547;
