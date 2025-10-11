@@ -65,6 +65,8 @@ export function displayCompletedTasks() {
         document.querySelector('.completed-tasks').innerHTML = "";
     
         completedTasks.forEach((task) => {
+            if (!task) return;
+
             let {name, time, date, listId} = task;
             let completedTasksHTML;
     

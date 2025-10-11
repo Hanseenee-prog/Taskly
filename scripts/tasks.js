@@ -37,9 +37,12 @@ export function loadFromStorage() {
   }
   
   if (!completedTasks) {
-    completedTasks = [
-
-    ];
+    completedTasks = [{
+        listId: 'task-5',
+        name: 'Cook soup',
+        time: '12:00',          
+        date: '2025-10-08'      
+    }];
   }
 }
 
