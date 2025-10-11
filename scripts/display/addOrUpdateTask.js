@@ -75,7 +75,7 @@ function addOrUpdateTask(name, time, date) {
           required>
       </div>
       
-      <input type='submit' value='Update Task' class='update-task-btn add-task-btn'>
+      <button type='submit' class='update-task-btn add-task-btn'></button>
     </form>
   `;
   document.querySelector('#addOrEditTask').innerHTML = html;
@@ -89,6 +89,7 @@ export function updateTask(matchingTask) {
   
   const {name, time, date} = matchingTask;
   addOrUpdateTask(name, time, date);
+  document.querySelector('.add-task-btn').innerText = 'Update Task';
   
   document.querySelectorAll('.update-task-btn').forEach((updateTaskBtn => {
     updateTaskBtn.addEventListener('click', () => {
@@ -111,7 +112,7 @@ export function updateTask(matchingTask) {
 export function addTask() {
   document.querySelector('#addNewTask').addEventListener('click', () => {
       addOrUpdateTask('','','');
-      document.querySelector('.add-task-btn').value = 'Add Task';
+      document.querySelector('.add-task-btn').innerText = 'Add Task';
       completedTasksBtn.style.display = 'none';
       
       document.querySelector('.add-task-btn').addEventListener('click', () => {
