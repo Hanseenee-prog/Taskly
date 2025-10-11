@@ -130,17 +130,22 @@ body::before {
     right: -20px;
 }
 
+.list-container {
+    border: 2px solid red;
+    
+}
+
 .list-container .list-items {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    border: 2px solid red;
     height: 250px;
 }
 
 /* TASK ITEM */
 .task-body {
+    width: 100%;
     position: relative;
     list-style-type: none;
     display: flex;
