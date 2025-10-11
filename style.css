@@ -130,10 +130,6 @@ body::before {
     right: -20px;
 }
 
-.list-container {
-    
-}
-
 .list-container .list-items {
     display: flex;
     flex-direction: column;
@@ -283,10 +279,20 @@ body::before {
 
 .completed-tasks {
     height: 100%;
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
     color: var(--font-color);
     font-weight: 500;
+    list-style-type: none;
+    text-wrap: nowrap;
+    text-decoration: line-through;
+}
+
+.completed-task-body .task-name{
+    width: calc(100% / 3);
+    font-size: 17px;
 }
 
 /* Add or Edit tasks form */

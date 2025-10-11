@@ -70,17 +70,13 @@ export function displayCompletedTasks() {
     
             completedTasksHTML = `
             <li class="completed-list-item" data-list-id="${listId}">
-                <div class="task-body">
-                    <div class="task">
-                        <p class="task-name">${name}</p>
-                        <p class="task-date">${date}, ${time}</p>
-                    </div>
-    
-                    <span class="list-toggler js-list-toggler" id="listToggler">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                        </svg>
-                    </span>
+                <div class="task-body completed-task-body">
+                    <p class="task-name">${name}</p>
+                    <p class="task-date">${date}, ${time}</p>
+
+                    <svg class="completed-checkmark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
                 </div>
             </li>
             `;
