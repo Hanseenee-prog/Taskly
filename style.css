@@ -75,6 +75,24 @@ body::before {
     letter-spacing: 1px;
 }
 
+.theme-toggle-btn {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 30px;
+}
+
+.star {
+    padding: 3px;
+}
+
+.star:hover {
+    scale: 1.1;
+}
+
 .container-body {
     width: 100%;
     background: var(--container-body-clr);
@@ -380,6 +398,7 @@ form input {
     place-items: center;
     grid-template-columns: repeat(2, 1fr);
     background: var(--container-accent-clr);
+    padding: 10px 15px;
 }
 
 .dialog-box-contents span {
@@ -390,8 +409,9 @@ form input {
     width: 60%;
     cursor: pointer;
     border-radius: 5px;
-    height: 30px;
+    height: 27px;
     border: none;
+    font-weight: 600;
 }
 
 .dialog-box-contents #no {
