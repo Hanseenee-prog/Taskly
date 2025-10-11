@@ -23,13 +23,13 @@ export function toggleTaskControls() {
 
 export function toggleTheme() {
     const light = document.querySelector('.light');
-    const dark = document.querySelector('.dark');
+    const dark = document.querySelector('.moon');
 
     document.querySelector('.theme-toggle-btn').addEventListener('click', (e) => {
         if (e.target.id === 'light') {
             light.classList.add('hidden');
         } else {
-            dark.classList.add('hidden');
+            dark.classList.remove('hidden');
         }
     })
 }
