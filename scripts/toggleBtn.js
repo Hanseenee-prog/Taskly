@@ -1,5 +1,8 @@
 let activeBtnContainer = null;
-let currentTheme = 'dark';
+let currentTheme = localStorage.getItem('currentTheme') || 'dark';
+
+const light = document.querySelector('.light');
+const dark = document.querySelector('.moon');
 
 export function toggleTaskControls() {    
     document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
@@ -21,15 +24,23 @@ export function toggleTaskControls() {
     }
 }
 
-export function toggleTheme() {
-    const light = document.querySelector('.light');
-    const dark = document.querySelector('.moon');
+function enableLightTheme() {
+    light.classList.add('hidden');
+    dark.classList.remove('hidden');
+    document.body.classList.add('light');
+    currentTheme = 'light';
+    localStorage.setItem('currentTheme', 'light');
+}
 
-    document.querySelector('.theme-toggle-btn').addEventListener('click', (e) => {
-        if (e.target.id === 'light') {
-            light.classList.add('hidden');
-        } else {
-            dark.classList.remove('hidden');
-        }
-    })
+function enableDarkTheme() {
+    dark.classList.add('hidden');
+    light.classList.remove('hidden');
+    document.body.classList.remove('light');
+    currentTheme = 'dark';
+    localStorage.setItem('currentTheme', 'dark');
+}
+
+export function toggleTheme() {
+    light.addEventListener('click', enableLightTheme);
+    dark.addEventListener('click', enableDarkTheme);
 }
