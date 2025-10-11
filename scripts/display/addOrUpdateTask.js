@@ -75,7 +75,11 @@ function addOrUpdateTask(name, time, date) {
           required>
       </div>
       
-      <button type='submit' class='update-task-btn add-task-btn'></button>
+      <button type='submit' class='update-task-btn add-task-btn'>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3zm-2.828 4.28a1 1 0 0 0-1.415-1.414L3.5 15.086V20.5l5.414-5.414 7.071-7.071zM21 16v6h-6"/>
+        </svg> Save
+      </button>
     </form>
   `;
   document.querySelector('#addOrEditTask').innerHTML = html;
@@ -89,7 +93,6 @@ export function updateTask(matchingTask) {
   
   const {name, time, date} = matchingTask;
   addOrUpdateTask(name, time, date);
-  document.querySelector('.add-task-btn').innerText = 'Update Task';
   
   document.querySelectorAll('.update-task-btn').forEach((updateTaskBtn => {
     updateTaskBtn.addEventListener('click', () => {
@@ -112,7 +115,7 @@ export function updateTask(matchingTask) {
 export function addTask() {
   document.querySelector('#addNewTask').addEventListener('click', () => {
       addOrUpdateTask('','','');
-      document.querySelector('.add-task-btn').innerText = 'Add Task';
+
       completedTasksBtn.style.display = 'none';
       
       document.querySelector('.add-task-btn').addEventListener('click', () => {
