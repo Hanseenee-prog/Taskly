@@ -150,6 +150,10 @@ body::before {
     right: -20px;
 }
 
+.list-container {
+    transition: width 0.6s ease, opacity 0.6s ease;
+}
+
 .list-container .list-items {
     display: flex;
     flex-direction: column;
@@ -381,6 +385,7 @@ form input {
     margin: -10px;
 }
 
+/* Dialog box */
 .dialog-box::backdrop {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.226), rgba(0, 0, 0, 0.443));
 }
@@ -424,6 +429,7 @@ form input {
     background-color: #d9534c;
 }
 
+/* Dynamically added classes */
 .toggle {
     top: 10%;
 }
@@ -431,6 +437,11 @@ form input {
 .expand-in {
     width: 100% !important;
     opacity: 1 !important;
+}
+
+.slide-out {
+    width: 0%;
+    opacity: 0;
 }
 
 .hidden {
