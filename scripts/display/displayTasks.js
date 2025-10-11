@@ -56,7 +56,7 @@ export function displayTasks() {
         setupTaskControls();
     }
     else {
-        document.querySelector('#listItems').innerHTML = 'You haven\'t added any tasks yet';
+        document.querySelector('#listItems').innerHTML = '<div class="empty-message">You haven\'t added any tasks yet.</div>';
     }
 }
 
@@ -88,7 +88,7 @@ export function displayCompletedTasks() {
             document.querySelector('.completed-tasks').innerHTML += completedTasksHTML;
         })
     } else {
-        document.querySelector('.completed-tasks').innerHTML = "You haven't completed any tasks yet."
+        document.querySelector('.completed-tasks').innerHTML = '<div class="empty-message">You haven\'t completed any tasks yet.</div>';
     }
 }
 
