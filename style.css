@@ -78,15 +78,17 @@ body::before {
 .theme-toggle-btn {
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.3));
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: 30px;
+    display: grid;
+    place-items: center;
+    height: 32px;
+    width: 32px;
+    padding: 0;
+    border: none;
+    cursor: pointer;
 }
 
-.star {
-    padding: 3px;
+.theme-toggle-btn svg {
+    display: block;
 }
 
 .star:hover {
