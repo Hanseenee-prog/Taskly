@@ -1,27 +1,11 @@
 let activeBtnContainer = null;
-let currentTheme = localStorage.getItem('currentTheme') || 'dark';
-
 const light = document.querySelector('.light');
 const dark = document.querySelector('.moon');
 
-export function toggleTaskControls() {    
-    document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
-        toggler.addEventListener('click', () => {
-            const parent = toggler.parentElement.parentElement;
-            showOrHideControls(parent.querySelector('.btn-container'))
-        })
-    })
+let currentTheme = localStorage.getItem('currentTheme');
 
-    function showOrHideControls(activeContainer) {
-        if (activeBtnContainer === activeContainer) {
-            activeContainer.classList.add('hidden');
-            activeBtnContainer = null;
-        } else {
-            document.querySelectorAll('.btn-container').forEach((container) => container.classList.add('hidden'));
-            activeContainer.classList.remove('hidden');
-            activeBtnContainer = activeContainer;
-        }
-    }
+if (!currentTheme) {
+    currentTheme = 'dark';
 }
 
 function enableLightTheme() {
@@ -41,6 +25,30 @@ function enableDarkTheme() {
 }
 
 export function toggleTheme() {
+    document.addEventListener('DOMContentLoaded', () => {
+        (currentTheme === 'dark') ? enableDarkTheme() : enableLightTheme();
+    })
+
     light.addEventListener('click', enableLightTheme);
     dark.addEventListener('click', enableDarkTheme);
+}
+
+export function toggleTaskControls() {    
+    document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
+        toggler.addEventListener('click', () => {
+            const parent = toggler.parentElement.parentElement;
+            showOrHideControls(parent.querySelector('.btn-container'))
+        })
+    })
+
+    function showOrHideControls(activeContainer) {
+        if (activeBtnContainer === activeContainer) {
+            activeContainer.classList.add('hidden');
+            activeBtnContainer = null;
+        } else {
+            document.querySelectorAll('.btn-container').forEach((container) => container.classList.add('hidden'));
+            activeContainer.classList.remove('hidden');
+            activeBtnContainer = activeContainer;
+        }
+    }
 }
