@@ -107,7 +107,7 @@ body::before {
     top: 10%;
     transform: translateY(-50%);
     z-index: 10;
-    padding: 8px 12px;
+    padding: 8px 9px;
     border-radius: 50%;
     border: none;
     cursor: pointer;

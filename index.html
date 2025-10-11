@@ -18,58 +18,51 @@
                 Taskly
             </p>
             <span class="toggle-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <!-- Central Circle -->
-                    <circle cx="12" cy="12" r="5"/>
+                <div class="light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <circle cx="12" cy="12" r="5"/>
 
-                    <!-- Rays as filled rectangles (rotated into position) -->
-                    <!-- Top and Bottom -->
-                    <rect x="11" y="1" width="2" height="3"/>
-                    <rect x="11" y="20" width="2" height="3"/>
-                    
-                    <!-- Left and Right -->
-                    <rect x="1" y="11" width="3" height="2"/>
-                    <rect x="20" y="11" width="3" height="2"/>
-
-                    <!-- Diagonal Rays (rotated rectangles) -->
-                    <!-- Using a group and transforms to position the diagonals cleanly -->
-                    <g transform="rotate(45 12 12)">
                         <rect x="11" y="1" width="2" height="3"/>
                         <rect x="11" y="20" width="2" height="3"/>
-                    </g>
-                    <g transform="rotate(90 12 12)">
-                        <rect x="11" y="1" width="2" height="3"/>
-                        <rect x="11" y="20" width="2" height="3"/>
-                    </g>
-                    <g transform="rotate(-45 12 12)">
-                        <rect x="11" y="1" width="2" height="3"/>
-                        <rect x="11" y="20" width="2" height="3"/>
-                    </g>
-                </svg>
+                        
+                        <rect x="1" y="11" width="3" height="2"/>
+                        <rect x="20" y="11" width="3" height="2"/>
 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                </svg>
+                        <g transform="rotate(45 12 12)">
+                            <rect x="11" y="1" width="2" height="3"/>
+                            <rect x="11" y="20" width="2" height="3"/>
+                        </g>
+                        <g transform="rotate(90 12 12)">
+                            <rect x="11" y="1" width="2" height="3"/>
+                            <rect x="11" y="20" width="2" height="3"/>
+                        </g>
+                        <g transform="rotate(-45 12 12)">
+                            <rect x="11" y="1" width="2" height="3"/>
+                            <rect x="11" y="20" width="2" height="3"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="moon hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </div>
             </span>
         </div>
         
         <div class="container-body">
             <button class="tab-btn completed-tasks-btn" id="completedTasks">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <!-- This combines the circle and the checkmark into a single, compound path -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                 </svg>
             </button>
             <button class="tab-btn pending-tasks-btn" id="pendingTasks">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <!-- Main clock body -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="13" r="9"/>
-                    <!-- Clock hands -->
                     <path d="M12 9v4l2 2"/>
-                    <!-- Alarm "bells" at the top -->
                     <path d="M5 3L2 6"/>
                     <path d="M22 6l-3-3"/>
-                    <!-- Small line to connect the bells to the clock -->
                     <path d="M6.38 18.78a6.38 6.38 0 0 0 11.24 0"/>
                 </svg>
             </button>
