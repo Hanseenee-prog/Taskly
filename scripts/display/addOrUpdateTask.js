@@ -40,6 +40,15 @@ function addOrUpdateTask(name, time, date) {
         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
       </svg>
     </button>
+    
+    <dialog class="dialog-box">
+        <div class="dialog-box-contents">
+            <span>Are you sure you want to exit?</span>
+            <button id="no" type="button">No</button>
+            <button id="yes">Yes</button>
+        </div>
+    </dialog>
+
     <form id='addOrUpdateTask'>
       <div class="form-input">
         <label for="taskName">Task name: </label>
