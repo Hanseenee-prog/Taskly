@@ -1,3 +1,5 @@
+import { loadFromStorage, saveToStorage } from '../tasks.js';
+
 let activeBtnContainer = null;
 
 export function toggleTaskControls() {    
@@ -9,8 +11,6 @@ export function toggleTaskControls() {
     })
 
     function showOrHideControls(activeContainer) {
-        // const {btnContainerId} = activeContainer.dataset;
-
         if (activeBtnContainer === activeContainer) {
             activeContainer.classList.add('hidden');
             activeBtnContainer = null;
@@ -20,4 +20,8 @@ export function toggleTaskControls() {
             activeBtnContainer = activeContainer;
         }
     }
+}
+
+function toggleTheme() {
+
 }
