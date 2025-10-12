@@ -343,6 +343,10 @@ form {
     height: 50px;
 }
 
+.form-input::placeholder {
+    color: #fff;
+}
+
 input[type="text"] {
     height: 69% !important;
 }
