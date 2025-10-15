@@ -398,6 +398,7 @@ form input {
     width: clamp(200px, 50vw, 400px);
     border-radius: 10px;
     border: none;
+    background: var(--container-accent-clr);
 }
 
 .dialog-box-contents {
@@ -405,7 +406,6 @@ form input {
     height: 70px;
     place-items: center;
     grid-template-columns: repeat(2, 1fr);
-    background: var(--container-accent-clr);
     padding: 10px 15px;
 }
 
