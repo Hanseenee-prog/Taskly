@@ -343,12 +343,39 @@ form {
     height: 50px;
 }
 
-.form-input::placeholder {
-    color: #fff;
+input[type="text"]::placeholder {
+    color: var(--font-color);
+    opacity: 0.7;
 }
 
 input[type="text"] {
     height: 69% !important;
+}
+
+.form-input .character-count {
+    font-size: 11px;
+    color: var(--font-color);
+    opacity: 0;
+    float: right;
+    transform: translate(0px, -10px) scale(0.8);
+    transition: all 0.5s ease;
+    margin-top: 2px;
+}
+
+.form-input .character-count div {
+    background: rgb(8, 131, 8);
+    padding: 4px 8px;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+.form-input.warning .character-count div {
+    background: rgb(191, 50, 25);
+}
+
+.form-input.active .character-count {
+    opacity: 0.8;
+    transform: translate(0px, 0px) scale(1);
 }
 
 .form-input label {

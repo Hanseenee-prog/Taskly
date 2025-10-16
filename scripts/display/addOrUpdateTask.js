@@ -45,7 +45,7 @@ function addOrUpdateTask(name, time, date) {
     
     <dialog class="dialog-box">
         <div class="dialog-box-contents">
-            <span>Are you sure you want to exit?</span>
+            <span>Are you sure you want to discard?</span>
             <button id="no" type="button">No</button>
             <button id="yes">Yes</button>
         </div>
@@ -54,9 +54,15 @@ function addOrUpdateTask(name, time, date) {
     <form id='addOrUpdateTask'>
       <div class="form-input">
         <label for="taskName">Task name: </label>
-        <input type="text" placeholder="task name" 
+        <input type="text" class="task-name-input" placeholder="What do you plan to do?" 
           id='taskName' 
-          value='${name}' required>
+          value='${name}' maxLength="25" required>
+          
+          <div class="character-count">
+            <div>
+              <span id="currentCount">0</span>/25 
+            </div>
+          </div>
       </div>
       
       <div class="form-input">
@@ -86,6 +92,7 @@ function addOrUpdateTask(name, time, date) {
   `;
   document.querySelector('#addOrEditTask').innerHTML = html;
   
+  handleInputLimit();
   showFormView();
   handleDialogBoxes();
 }
@@ -140,5 +147,31 @@ export function addTask() {
           handleDialogBoxes();
           saveToStorage();
       })
+  })
+}
+
+function handleInputLimit() {
+  const inputBox = document.getElementById('taskName');
+  const currentCount = document.getElementById('currentCount');
+  const inputContainer = document.querySelector('.form-input');
+
+  if (!inputBox) return;
+  currentCount.textContent = inputBox.value.length;
+
+  inputBox.addEventListener('input', () => {
+    currentCount.textContent = inputBox.value.length;
+    inputContainer.classList.toggle('active', inputBox.value.length > 0);
+
+    if (inputBox.value.length > 20) {
+      inputContainer.classList.add('warning');
+    } else {
+      inputContainer.classList.remove('warning');
+    }
+  });
+
+  inputBox.addEventListener('blur', () => {
+    setTimeout(() => {
+      inputContainer.classList.toggle('active');
+    }, 3000)
   })
 }
