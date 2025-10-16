@@ -2,6 +2,8 @@ import { saveToStorage, tasks } from '../tasks.js';
 import { pendingTasksBtn, completedTasksBtn } from '../scripts.js';
 
 function showFormView() {
+  if (!document.querySelector('#addOrEditTask')) return;
+  
   document.querySelector('#addOrEditTask').classList.remove('hidden');
   document.querySelector('.list-container').classList.add('hidden');
   document.querySelector('.add-new-task').classList.add('hidden');
@@ -126,7 +128,7 @@ export function addTask() {
           if(nameValue === '' || timeValue === '' || dateValue === '') {
             e.preventDefault();
           } else {
-            tasks.push({
+            tasks.unshift({
               listId: `task-${Date.now()}`,
               name: nameValue,
               time: timeValue,
