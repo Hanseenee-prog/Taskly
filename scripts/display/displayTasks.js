@@ -1,6 +1,7 @@
 import { tasks, completedTasks } from '../tasks.js';
 import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
+import { dateFormatter } from '../utils/dateFormatter.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
@@ -15,7 +16,7 @@ export function displayTasks() {
                 <div class="task-body">
                     <div class="task">
                         <p class="task-name">${name}</p>
-                        <p class="task-date">${date}, ${time}</p>
+                        <p class="task-date">${dateFormatter(date)}, ${time}</p>
                     </div>
     
                     <span class="list-toggler js-list-toggler" id="listToggler">
