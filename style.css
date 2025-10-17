@@ -163,12 +163,6 @@ body::before {
     text-wrap: nowrap;
 }
 
-.empty-message {
-    display: grid;
-    place-items: center;
-    height: 100%;
-}
-
 /* TASK ITEM */
 .task-body {
     width: 100%;
@@ -316,12 +310,71 @@ body::before {
     font-weight: 500;
     list-style-type: none;
     text-wrap: nowrap;
+}
+
+.completed-list-item {
+    width: 100%;
+}
+
+.list-item-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    position: relative;
+}
+
+.completed-task-body {
+    width: 100%;
+    transition: all 0.5s ease;
     text-decoration: line-through;
+}
+
+.list-item-container.active .completed-task-body {
+    left: -5%;
+    transform: translate(0%);
+    z-index: -20;
 }
 
 .completed-task-body .task-name{
     width: calc(100% / 3);
     font-size: 17px;
+}
+
+.completed-tasks-delete {
+    position: absolute;
+    z-index: -10;
+    width: 10%;
+    right: 3%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.list-item-container.active .completed-tasks-delete {
+    opacity: 1;
+    position: relative;
+    z-index: 10;
+}
+
+.completed-tasks-delete-btn {
+    background: var(--delete-btn-clr);
+    border-radius: 15px;
+    padding: 11px;
+}
+
+.completed-tasks-delete-btn svg {
+    color: var(--font-color);
+    height: 20px;
+    width: 20px;
+}
+
+.empty-message {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    text-decoration: none;
 }
 
 /* Add or Edit tasks form */
@@ -477,5 +530,5 @@ form input {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }

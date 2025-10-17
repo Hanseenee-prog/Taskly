@@ -1,5 +1,5 @@
 import { tasks, completedTasks } from '../tasks.js';
-import { setupTaskControls } from '../taskControls.js';
+import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
 
 export function displayTasks() {
@@ -72,21 +72,33 @@ export function displayCompletedTasks() {
     
             completedTasksHTML = `
             <li class="completed-list-item" data-list-id="${listId}">
-                <div class="task-body completed-task-body">
-                    <p class="task-name">${name}</p>
-                    <p class="task-date">${date}, ${time}</p>
+                <div class="list-item-container">
+                    <div class="task-body completed-task-body">
+                        <p class="task-name">${name}</p>
+                        <p class="task-date">${date}, ${time}</p>
 
-                    <svg class="completed-checkmark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                    </svg>
+                        <svg class="completed-checkmark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <div class="completed-tasks-delete">
+                        <div class="completed-tasks-delete-btn js-delete-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" > 
+                                <path d="M4 7l16 0" /> 
+                                <path d="M10 11l0 6" /> <path d="M14 11l0 6" /> 
+                                <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12" /> 
+                                <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3" /> 
+                            </svg>
+                        <div>
+                    </div>
                 </div>
             </li>
             `;
             
             document.querySelector('.completed-tasks').innerHTML += completedTasksHTML;
         })
+        setupCompletedTasksControls();
     } else {
         document.querySelector('.completed-tasks').innerHTML = '<div class="empty-message">You haven\'t completed any tasks yet.</div>';
     }
 }
-

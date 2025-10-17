@@ -1,5 +1,6 @@
 import { saveToStorage, tasks } from '../tasks.js';
-import { pendingTasksBtn, completedTasksBtn } from '../scripts.js';
+import { completedTasksBtn } from '../scripts.js';
+import { displayTasks } from './displayTasks.js';
 
 function showFormView() {
   if (!document.querySelector('#addOrEditTask')) return;
@@ -95,7 +96,6 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
   
   document.querySelector('#addOrEditTask').innerHTML = html;
   
-  // Handle form submission HERE, right after creating it
   document.querySelector('#addOrUpdateTask').addEventListener('submit', (e) => {
     e.preventDefault();
     
@@ -122,6 +122,7 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
     
     saveToStorage();
     showListView();
+    displayTasks();
     completedTasksBtn.style.display = 'block';
   });
   

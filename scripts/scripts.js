@@ -8,6 +8,7 @@ export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
 displayTasks();
+displayCompletedTasks();
 addTask();
 
 pendingTasksBtn.style.display = 'none';
@@ -18,7 +19,7 @@ function completedTasksAnimation() {
   completedTasksBtn.addEventListener('click', () => {
     document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     document.querySelector('.list-container').classList.toggle('slide-out');
-    document.querySelector('#addNewTask').style.display = "none";
+    document.querySelector('#addNewTask').classList.add('hidden');
     completedTasksBtn.style.display = 'none';
     pendingTasksBtn.style.display = 'block';
     activeTab = pendingTasksBtn.id;
@@ -27,7 +28,7 @@ function completedTasksAnimation() {
   pendingTasksBtn.addEventListener('click', () => {
     document.querySelector('.completed-tasks-container').classList.toggle('expand-in');
     document.querySelector('.list-container').classList.toggle('slide-out');
-    document.querySelector('#addNewTask').style.display = "block";
+    document.querySelector('#addNewTask').classList.remove('hidden');
     pendingTasksBtn.style.display = 'none';
     completedTasksBtn.style.display = 'block';
     activeTab = completedTasksBtn.id;
