@@ -35,7 +35,9 @@ function handleDialogBoxes() {
   })
 }
 
-function addOrUpdateTask(name, time, date) {
+function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = null) {
+  showFormView();
+
   const html = `
     <button class='close'>
       <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -90,64 +92,54 @@ function addOrUpdateTask(name, time, date) {
       </button>
     </form>
   `;
+  
   document.querySelector('#addOrEditTask').innerHTML = html;
   
-  handleInputLimit();
-  showFormView();
-  handleDialogBoxes();
-}
-
-export function updateTask(matchingTask) {
-  completedTasksBtn.style.display = 'none';
-  
-  const {name, time, date} = matchingTask;
-  addOrUpdateTask(name, time, date);
-  
-  document.querySelectorAll('.update-task-btn').forEach((updateTaskBtn => {
-    updateTaskBtn.addEventListener('click', () => {
-      let nameValue = document.getElementById('taskName').value;
-      let timeValue = document.getElementById('taskTime').value;
-      let dateValue = document.getElementById('taskDate').value;
-      
+  // Handle form submission HERE, right after creating it
+  document.querySelector('#addOrUpdateTask').addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    let nameValue = document.getElementById('taskName').value;
+    let timeValue = document.getElementById('taskTime').value;
+    let dateValue = document.getElementById('taskDate').value;
+    
+    if (!nameValue || !timeValue || !dateValue) return;
+    
+    if (isEditMode && matchingTask) {
       Object.assign(matchingTask, {
         name: nameValue,
         time: timeValue,
         date: dateValue
       });
-      
-      completedTasksBtn.style.display = 'block';
-      saveToStorage();
-    })
-  }))
+    } else {
+      tasks.unshift({
+        listId: `task-${Date.now()}`,
+        name: nameValue,
+        time: timeValue,
+        date: dateValue
+      });
+    }
+    
+    saveToStorage();
+    showListView();
+    completedTasksBtn.style.display = 'block';
+  });
+  
+  handleInputLimit();
+  handleDialogBoxes();
+}
+
+export function updateTask(matchingTask) {
+  completedTasksBtn.style.display = 'none';
+  const {name, time, date} = matchingTask;
+  addOrUpdateTask(name, time, date, true, matchingTask);
 }
 
 export function addTask() {
   document.querySelector('#addNewTask').addEventListener('click', () => {
-      addOrUpdateTask('','','');
-
-      completedTasksBtn.style.display = 'none';
-      
-      document.querySelector('.add-task-btn').addEventListener('click', () => {
-          let nameValue = document.getElementById('taskName').value;
-          let timeValue = document.getElementById('taskTime').value;
-          let dateValue = document.getElementById('taskDate').value;
-          
-          if(nameValue === '' || timeValue === '' || dateValue === '') {
-            e.preventDefault();
-          } else {
-            tasks.unshift({
-              listId: `task-${Date.now()}`,
-              name: nameValue,
-              time: timeValue,
-              date: dateValue
-            })
-            console.log(tasks[tasks.length - 1].listId)
-          }
-          
-          handleDialogBoxes();
-          saveToStorage();
-      })
-  })
+    addOrUpdateTask('', '', '', false);
+    completedTasksBtn.style.display = 'none';
+  });
 }
 
 function handleInputLimit() {
