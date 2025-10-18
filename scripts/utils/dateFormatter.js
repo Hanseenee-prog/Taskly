@@ -23,3 +23,8 @@ export function dateFormatter(date) {
 export function timeFormatter(time) {
     return dayjs(`2000-01-01T${time}`).format('hh:mm a');
 }
+
+export function isOverdue(date, time) {
+    const taskDateTime = dayjs(`${date} ${time}`);
+    return taskDateTime.isBefore(dayjs());
+}

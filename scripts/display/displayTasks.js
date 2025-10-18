@@ -1,7 +1,7 @@
 import { tasks, completedTasks } from '../tasks.js';
 import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
-import { dateFormatter, timeFormatter } from '../utils/dateFormatter.js';
+import { dateFormatter, timeFormatter, isOverdue } from '../utils/dateFormatter.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
@@ -11,9 +11,11 @@ export function displayTasks() {
             let {name, time, date, listId} = task;
             let tasksHTML;
     
+            const isDue = isOverdue(date, time);
+            
             tasksHTML = `
             <li class="list-item" data-list-id="${listId}">
-                <div class="task-body">
+                <div class="task-body ${isDue ? 'overdue' : ''}">
                     <div class="task">
                         <p class="task-name">${name}</p>
                         <p class="task-date">${dateFormatter(date)}, ${timeFormatter(time)}</p>

@@ -532,3 +532,33 @@ form input {
 .hidden {
     display: none !important;
 }
+
+.task-body.overdue {
+    border-left: 5px solid #ff4d4f;
+}
+
+.task-body.overdue .task-date {
+    color: #ff4d4f;
+    font-weight: 600;
+    animation: blink 1s ease-in-out infinite;
+    position: relative;
+    padding-left: 22px;
+}
+
+.task-body.overdue .task-date::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4d4f"><path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zM11 10v4h2v-4h-2zm0 5v2h2v-2h-2z"/></svg>');
+    background-size: contain;
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
