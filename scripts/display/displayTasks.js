@@ -1,7 +1,7 @@
 import { tasks, completedTasks } from '../tasks.js';
 import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
-import { dateFormatter } from '../utils/dateFormatter.js';
+import { dateFormatter, timeFormatter } from '../utils/dateFormatter.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
@@ -16,7 +16,7 @@ export function displayTasks() {
                 <div class="task-body">
                     <div class="task">
                         <p class="task-name">${name}</p>
-                        <p class="task-date">${dateFormatter(date)}, ${time}</p>
+                        <p class="task-date">${dateFormatter(date)}, ${timeFormatter(time)}</p>
                     </div>
     
                     <span class="list-toggler js-list-toggler" id="listToggler">
@@ -76,7 +76,7 @@ export function displayCompletedTasks() {
                 <div class="list-item-container">
                     <div class="task-body completed-task-body">
                         <p class="task-name">${name}</p>
-                        <p class="task-date">${date}, ${time}</p>
+                        <p class="task-date">${dateFormatter(date)}, ${timeFormatter(time)}</p>
 
                         <svg class="completed-checkmark" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>

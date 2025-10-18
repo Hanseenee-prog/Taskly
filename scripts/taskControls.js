@@ -67,11 +67,13 @@ export function setupCompletedTasksControls() {
                 container.classList.add('active');
                 activeContainer = container;
             }
-        });
-    })
 
-    document.querySelector('.pending-tasks-btn').addEventListener('click', () => {
-        activeContainer.classList.remove('active');
-        activeContainer = null;
+            document.querySelector('.pending-tasks-btn').addEventListener('click', () => {
+                if (!container.classList.contains('active')) return;
+
+                container.classList.remove('active');
+                activeContainer = null;
+            })
+        });
     })
 }
