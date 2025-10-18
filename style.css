@@ -57,7 +57,23 @@ body::before {
     width: clamp(300px, 70vw, 600px);
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 50px;
+}
+
+/* Popup divs */
+
+.popup-status {
+    position: absolute;
+    top: 10%;
+}
+
+.popup-status div {
+    padding: 10px;
+}
+
+.popup-status .added,  .popup-status .done{
+    background: lightgreen;
 }
 
 .container-head {
