@@ -88,7 +88,7 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
       
       <button type='submit' class='update-task-btn add-task-btn'>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3zm-2.828 4.28a1 1 0 0 0-1.415-1.414L3.5 15.086V20.5l5.414-5.414 7.071-7.071zM21 16v6h-6"/>
+          <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L''17 3zm-2.828 4.28a1 1 0 0 0-1.415-1.414L3.5 15.086V20.5l5.414-5.414 7.071-7.071zM21 16v6h-6"/>
         </svg> Save
       </button>
     </form>
@@ -120,12 +120,13 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
       });
     }
     
+    showPopups('.added');
+    
     saveToStorage();
     showListView();
     displayTasks();
     completedTasksBtn.style.display = 'block';
   });
-  
   handleInputLimit();
   handleDialogBoxes();
 }
@@ -167,4 +168,12 @@ function handleInputLimit() {
       inputContainer.classList.toggle('active');
     }, 3000)
   })
+}
+
+export function showPopups(popup) {
+  setTimeout(() => {
+      document.querySelector(popup).classList.toggle('hidden');
+    }, 1000);
+    
+  document.querySelector(popup).classList.toggle('hidden');
 }

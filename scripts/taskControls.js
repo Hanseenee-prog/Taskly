@@ -1,6 +1,6 @@
 import { tasks, saveToStorage, completedTasks } from './tasks.js';
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
-import { updateTask } from './display/addOrUpdateTask.js';
+import { updateTask, showPopups } from './display/addOrUpdateTask.js';
 
 function handleClick(e, sourceArray, onEdit, onDone) {
     const deleteBtn = e.target.closest('.js-delete-btn');
@@ -20,6 +20,7 @@ function handleClick(e, sourceArray, onEdit, onDone) {
 
     if (deleteBtn) {
         sourceArray.splice(index, 1);
+        showPopups('.deleted')
         saveToStorage();
         displayTasks();
         displayCompletedTasks();
@@ -38,6 +39,7 @@ export function setupTaskControls() {
             if (index !== -1) {
                 const [doneTask] = tasks.splice(index, 1);
                 completedTasks.unshift(doneTask);
+                showPopups('.done')
                 saveToStorage();
                 displayTasks();
                 displayCompletedTasks();
