@@ -10,7 +10,7 @@
 <body>
     <main class="container">
         <div class="popup-status">
-            <div class="added">
+            <div class="added hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 13l4 4L19 7" />
                 </svg> Added
@@ -18,7 +18,7 @@
             <div class="deleted hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M18 6L6 18M6 6l12 12" />
-                </svg> Deleted
+                </svg> <span>Deleted</span>
             </div>
             <div class="done hidden">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
@@ -120,11 +120,33 @@
         </div>
     </main>
     
-    <dialog class="dialog-box">
+    <dialog class="dialog-box" id="defaultDialog">
         <div class="dialog-box-contents">
             <span>Are you sure you want to discard?</span>
             <button id="no" type="button">No</button>
             <button id="yes">Yes</button>
+        </div>
+    </dialog>
+
+    <dialog class="dialog-box" id="resetOptionsDialog">
+        <div class="dialog-box-contents">
+            <span>Which do you want to Reset?</span>
+
+            <div class="resetBtns">
+                <button class="reset-option" data-type="completedTasksReset">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg> Completed Tasks</button>
+                <button class="reset-option" data-type="pendingTasksReset">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="13" r="9"/>
+                        <path d="M12 9v4l2 2"/>
+                        <path d="M5 3L2 6"/>
+                        <path d="M22 6l-3-3"/>
+                        <path d="M6.38 18.78a6.38 6.38 0 0 0 11.24 0"/>
+                    </svg> Pending Tasks</button>
+                <button class="reset-option" data-type="bothTasksReset">Both</button>
+            </div>
         </div>
     </dialog>
 

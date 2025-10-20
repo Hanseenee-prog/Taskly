@@ -1,6 +1,6 @@
 import { tasks, saveToStorage, completedTasks } from './tasks.js';
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
-import { updateTask, showPopups, handleDialogBoxes } from './display/addOrUpdateTask.js';
+import { updateTask, showPopups } from './display/addOrUpdateTask.js';
 
 function handleClick(e, sourceArray, onEdit, onDone) {
     const deleteBtn = e.target.closest('.js-delete-btn');
@@ -19,6 +19,7 @@ function handleClick(e, sourceArray, onEdit, onDone) {
     const matchingTask = sourceArray[index];
 
     if (deleteBtn) {
+        document.querySelector('.deleted span').innerText = 'Deleted';
         sourceArray.splice(index, 1);
         showPopups('.deleted')
         saveToStorage();
@@ -84,27 +85,53 @@ export function setupResetButton() {
     const resetBtn = document.querySelector('#reset');
     
     resetBtn.addEventListener('click', () => {
-        const dialogBox = document.querySelector('.dialog-box');
+        const dialogBox = document.querySelector('#defaultDialog');
         const dialogBoxText = dialogBox.querySelector('span');
         
         dialogBoxText.textContent = 'Reset all tasks? This cannot be undone';
         dialogBox.showModal();
         
         const yesBtn = document.querySelector('#yes');
-        const noBtn = document.querySelector('#no');
+        const noBtn = document.querySelector('#no');            
         
-        const handleConfirm = () => {
-            tasks.length = 0;
-            completedTasks.length = 0;
-            saveToStorage();
-            displayTasks();
-            displayCompletedTasks();
+        yesBtn.addEventListener('click', () => {
             dialogBox.close();
-        };
-        
-        yesBtn.addEventListener('click', handleConfirm, { once: true });
+            showResetOptions();
+        }, { once: true });
+
         noBtn.addEventListener('click', () => {
             dialogBox.close();
         }, { once: true });
+    });
+}
+
+function showResetOptions() {
+    const resetDialogBox = document.querySelector('#resetOptionsDialog');
+    resetDialogBox.showModal();
+
+    document.querySelectorAll('.reset-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const type = option.dataset.type;
+
+            if (type === 'completedTasksReset') {
+                completedTasks.length = 0;
+            }
+            if (type === 'pendingTasksReset') {
+                tasks.length = 0;
+            }
+            if (type === 'bothTasksReset') {
+                completedTasks.length = 0;
+                tasks.length = 0;
+            }
+
+            saveToStorage();
+            displayTasks();
+            displayCompletedTasks();
+
+            document.querySelector('.deleted span').innerText = 'Cleared';
+
+            showPopups('.deleted');
+            resetDialogBox.close();
+        })
     });
 }

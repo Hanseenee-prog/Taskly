@@ -1,5 +1,5 @@
 :root {
-    --font-color: #f1ececfd;
+    --font-color: #f1ecece5;
     --background-image: url('imgs/dark-sky.jpg');
     --container-accent-clr: rgba(127, 134, 218, 0.85);
     --container-body-clr: rgba(255, 255, 255, 0.2);
@@ -7,6 +7,7 @@
     --edit-btn-clr: #1b1da5;
     --done-btn-clr: rgb(68, 109, 55);
     --fill-clr: #161616;
+    --overdue-task: #df1f22;
 }
 
 /* 🌞 Light Theme Overrides */
@@ -19,6 +20,7 @@
     --edit-btn-clr: #4862d1;
     --done-btn-clr: #148c34;
     --fill-clr: #000;
+    --overdue-task: rgb(210, 22, 26);
 }
 
 * {
@@ -69,21 +71,25 @@ body::before {
 }
 
 .popup-status div {
-    padding: 10px;
+    padding: 7px 12px;
     display: flex;
-    justify-content: center
+    justify-content: last baseline;
+    flex-direction: row;
+    border-radius: 50px;
 }
 
 .popup-status .added,  .popup-status .done{
-    background: lightgreen;
+    background: rgb(40, 223, 40);
 }
 
 .popup-status .deleted {
-    background: red;
+    background: rgb(243, 47, 17);
 }
 
 .popup-status div svg {
     margin-right: 2px;
+    width: 15px;
+    height: 15px;
 }
 
 .container-head {
@@ -516,6 +522,7 @@ form input {
     border-radius: 10px;
     border: none;
     background: var(--container-accent-clr);
+    padding-bottom: 10px;
 }
 
 .dialog-box-contents {
@@ -537,6 +544,23 @@ form input {
     height: 27px;
     border: none;
     font-weight: 600;
+    cursor: pointer;
+}
+
+#resetOptionsDialog .dialog-box-contents{
+    height: auto;
+}
+
+#resetOptionsDialog .reset-option {
+    width: 197%;
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#resetOptionsDialog .reset-option svg {
+    margin-right: 3%;
 }
 
 .dialog-box-contents #no {
@@ -567,11 +591,11 @@ form input {
 }
 
 .task-body.overdue {
-    border-left: 5px solid #ff4d4f;
+    border-left: 5px solid var(--overdue-task);
 }
 
 .task-body.overdue .task-date {
-    color: #ff4d4f;
+    color: var(--overdue-task);
     font-weight: 600;
     animation: blink 1s ease-in-out infinite;
     position: relative;
@@ -586,8 +610,10 @@ form input {
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4d4f"><path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zM11 10v4h2v-4h-2zm0 5v2h2v-2h-2z"/></svg>');
-    background-size: contain;
+    mask-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff4d4f"><path d="M12 2L1 21h22L12 2zm0 3.5L19.5 19h-15L12 5.5zM11 10v4h2v-4h-2zm0 5v2h2v-2h-2z"/></svg>');
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background: var(--overdue-task);
     animation: blink 1s ease-in-out infinite;
 }
 
