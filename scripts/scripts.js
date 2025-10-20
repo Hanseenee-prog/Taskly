@@ -1,6 +1,7 @@
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
 import { addTask } from './display/addOrUpdateTask.js';
 import { toggleTheme } from './toggleBtn.js';
+import { setupResetButton } from './taskControls.js';
 
 toggleTheme();
 
@@ -10,6 +11,7 @@ export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 displayTasks();
 displayCompletedTasks();
 addTask();
+setupResetButton();
 
 pendingTasksBtn.style.display = 'none';
 

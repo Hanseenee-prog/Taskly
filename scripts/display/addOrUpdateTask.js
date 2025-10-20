@@ -16,20 +16,20 @@ function showListView() {
   document.querySelector('.add-new-task').classList.remove('hidden');
 }
 
-function handleDialogBoxes() {
+export function handleDialogBoxes(message, func, buttonType) {
   const dialogBox = document.querySelector('.dialog-box');
+  const dialogBoxText = document.querySelector('.dialog-box span');
   
-  document.querySelectorAll('.close').forEach((closeBtn) => {
-      closeBtn.addEventListener('click', () => {
-          console.log(dialogBox)
-          dialogBox.showModal();
-      })
+  dialogBoxText.innerHTML = message;
+  
+  document.querySelector(buttonType).addEventListener('click', () => {
+    dialogBox.showModal();
   })
   
   document.querySelector('#yes').addEventListener('click', () => {
     dialogBox.close();
     completedTasksBtn.style.display = 'block';
-    showListView();
+    func();
   });
   document.querySelector('#no').addEventListener('click', () => {
     dialogBox.close();
@@ -45,14 +45,6 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
         <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
       </svg>
     </button>
-    
-    <dialog class="dialog-box">
-        <div class="dialog-box-contents">
-            <span>Are you sure you want to discard?</span>
-            <button id="no" type="button">No</button>
-            <button id="yes">Yes</button>
-        </div>
-    </dialog>
 
     <form id='addOrUpdateTask'>
       <div class="form-input">
@@ -121,14 +113,15 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
     }
     
     showPopups('.added');
-    
     saveToStorage();
     showListView();
     displayTasks();
     completedTasksBtn.style.display = 'block';
   });
+  
+  if (isEditMode) handleDialogBoxes('Are you sure you want to discard changes?', showListView, '.close');
   handleInputLimit();
-  handleDialogBoxes();
+  if (!isEditMode) handleDialogBoxes('Are you sure you want to cancel?', showListView, '.close');
 }
 
 export function updateTask(matchingTask) {

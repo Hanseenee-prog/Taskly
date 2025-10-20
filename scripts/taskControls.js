@@ -1,6 +1,6 @@
 import { tasks, saveToStorage, completedTasks } from './tasks.js';
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
-import { updateTask, showPopups } from './display/addOrUpdateTask.js';
+import { updateTask, showPopups, handleDialogBoxes } from './display/addOrUpdateTask.js';
 
 function handleClick(e, sourceArray, onEdit, onDone) {
     const deleteBtn = e.target.closest('.js-delete-btn');
@@ -32,7 +32,7 @@ function handleClick(e, sourceArray, onEdit, onDone) {
 
 export function setupTaskControls() {
     const listContainer = document.querySelector('#listItems');
-    
+ 
     listContainer.addEventListener('click', (e) => {
         handleClick(e, tasks, updateTask, (task) => {
             const index = tasks.findIndex(t => t.listId === task.listId);
@@ -78,4 +78,33 @@ export function setupCompletedTasksControls() {
             })
         });
     })
+}
+
+export function setupResetButton() {
+    const resetBtn = document.querySelector('#reset');
+    
+    resetBtn.addEventListener('click', () => {
+        const dialogBox = document.querySelector('.dialog-box');
+        const dialogBoxText = dialogBox.querySelector('span');
+        
+        dialogBoxText.textContent = 'Reset all tasks? This cannot be undone';
+        dialogBox.showModal();
+        
+        const yesBtn = document.querySelector('#yes');
+        const noBtn = document.querySelector('#no');
+        
+        const handleConfirm = () => {
+            tasks.length = 0;
+            completedTasks.length = 0;
+            saveToStorage();
+            displayTasks();
+            displayCompletedTasks();
+            dialogBox.close();
+        };
+        
+        yesBtn.addEventListener('click', handleConfirm, { once: true });
+        noBtn.addEventListener('click', () => {
+            dialogBox.close();
+        }, { once: true });
+    });
 }
