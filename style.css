@@ -130,7 +130,7 @@ body::before {
     display: block;
 }
 
-.star:hover {
+.star:hover, .sort svg:hover, .reset svg:hover {
     scale: 1.1;
 }
 
