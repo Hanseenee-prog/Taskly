@@ -50,14 +50,18 @@ export function setupSortButton() {
 
             const sortValue = inputOption.value;
             localStorage.setItem('checkedSortOption', `${sortValue}`)
-            applySort(sortValue);
+            applySort();
             closeDropdown();
+            saveToStorage();
+            displayTasks();
         }) 
     })
 }
 
-function applySort(value) {
-    switch (value) {
+export function applySort() {
+    const savedSort = localStorage.getItem('checkedSortOption') || 'date-newest';
+    
+    switch (savedSort) {
         case 'date-oldest':
             tasks.sort((a, b) => dayjs(`${a.date} ${a.time}`) - dayjs(`${b.date} ${b.time}`));
             break;
@@ -70,7 +74,4 @@ function applySort(value) {
         default:
             tasks.sort((a, b) => dayjs(`${b.date} ${b.time}`) - dayjs(`${a.date} ${a.time}`));
     }
-
-    saveToStorage();
-    displayTasks();
 }

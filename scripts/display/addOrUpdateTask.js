@@ -1,6 +1,7 @@
 import { saveToStorage, tasks } from '../tasks.js';
 import { completedTasksBtn } from '../scripts.js';
 import { displayTasks } from './displayTasks.js';
+import { applySort } from './popups.js';
 
 function showFormView() {
   if (!document.querySelector('#addOrEditTask')) return;
@@ -112,6 +113,7 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
       });
     }
     
+    applySort();
     showPopups('.added');
     saveToStorage();
     showListView();
@@ -165,8 +167,8 @@ function handleInputLimit() {
 
 export function showPopups(popup) {
   setTimeout(() => {
-      document.querySelector(popup).classList.toggle('hidden');
+      document.querySelector(popup).classList.add('hidden');
     }, 1000);
     
-  document.querySelector(popup).classList.toggle('hidden');
-}
+  document.querySelector(popup).classList.remove('hidden');
+};

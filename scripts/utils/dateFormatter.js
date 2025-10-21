@@ -28,3 +28,16 @@ export function isOverdue(date, time) {
     const taskDateTime = dayjs(`${date} ${time}`);
     return taskDateTime.isBefore(dayjs());
 }
+
+export function autoCheckOverdue(tasks) {
+  // Auto-check overdue tasks every 1 minute
+  setInterval(() => {
+    document.querySelectorAll('.list-item').forEach(item => {
+      const id = item.dataset.listId;
+      const task = tasks.find(t => t.listId === id);
+      if (!task) return;
+      item.querySelector('.task-body')
+          .classList.toggle('overdue', isOverdue(task.date, task.time));
+    });
+  }, 600);
+};

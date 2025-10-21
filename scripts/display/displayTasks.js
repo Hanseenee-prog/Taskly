@@ -1,10 +1,13 @@
 import { tasks, completedTasks } from '../tasks.js';
 import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.js';
 import { toggleTaskControls } from '../toggleBtn.js';
-import { dateFormatter, timeFormatter, isOverdue } from '../utils/dateFormatter.js';
+import { dateFormatter, timeFormatter, isOverdue, autoCheckOverdue } from '../utils/dateFormatter.js';
+import { applySort } from './popups.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
+        applySort();
+
         document.querySelector('#listItems').innerHTML = "";
     
         tasks.forEach((task) => {
@@ -103,7 +106,9 @@ export function displayCompletedTasks() {
             document.querySelector('.completed-tasks').innerHTML += completedTasksHTML;
         })
         setupCompletedTasksControls();
+    
     } else {
         document.querySelector('.completed-tasks').innerHTML = '<div class="empty-message">You haven\'t completed any tasks yet.</div>';
     }
 }
+autoCheckOverdue(tasks);
