@@ -646,7 +646,7 @@ form input {
     margin-bottom: 4px;
 }
 
-.sort-option.active {
+.active-sort {
     background: rgba(255, 255, 255, 0.2);
 }
 

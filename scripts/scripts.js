@@ -9,11 +9,11 @@ toggleTheme();
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
+setupSortButton();
 displayTasks();
 displayCompletedTasks();
 addTask();
 setupResetButton();
-setupSortButton();
 
 pendingTasksBtn.style.display = 'none';
 

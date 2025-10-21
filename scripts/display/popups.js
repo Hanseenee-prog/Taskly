@@ -4,7 +4,17 @@ import { displayTasks } from "./displayTasks.js";
 export function setupSortButton() {
     const sortBtn = document.querySelector('.sort');
     const sortDropdown = document.querySelector('.sort-dropdown');
-    let activeSortOption = null;
+    const sortOptions = document.querySelectorAll('.sort-option');
+
+    const checkedSortOptionValue = localStorage.getItem('checkedSortOption') || 'date-newest';
+    if (checkedSortOptionValue) {
+        const loadedSortOption = document.querySelector(`input[value = ${checkedSortOptionValue}]`);
+        loadedSortOption.checked = true;
+        loadedSortOption.closest('.sort-option').classList.add('active-sort');
+    } else {
+        document.querySelector(`input[value = 'date-newest']`).checked = true;
+        document.querySelector(`input[value = 'date-newest']`).classList.add('active-sort');
+    }
     
     sortBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -28,23 +38,18 @@ export function setupSortButton() {
         }, 300);
     };
     
-    document.querySelectorAll('.sort-option').forEach(option => {
+    sortOptions.forEach(option => {
         option.addEventListener('click', (e) => {
-            if (activeSortOption) {
-                option.classList.remove('active');
-            }
-
-            if (activeSortOption === option) {
-                activeSortOption = null;
-            } else {
-                option.classList.add('active');
-                activeSortOption = option;
-            }
-
             const inputOption = e.target.closest('input[name="sort"]');
             if(!inputOption) return;
 
+            if (e.target.contains(option) || e.target.contains(inputOption)) {
+                sortOptions.forEach(option => option.classList.remove('active-sort'))
+                option.classList.add('active-sort');
+            }
+
             const sortValue = inputOption.value;
+            localStorage.setItem('checkedSortOption', `${sortValue}`)
             applySort(sortValue);
             closeDropdown();
         }) 
