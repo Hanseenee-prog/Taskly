@@ -150,7 +150,7 @@ body::before {
     flex-direction: column;
 }
 
-.containers, .completed-tasks-container {
+.containers, .completed-tasks {
     position: relative;
     overflow-x: hidden;
     overflow-y: auto;
@@ -200,6 +200,16 @@ body::before {
     gap: 10px;
     height: 250px;
     text-wrap: nowrap;
+}
+
+.list-toggler {
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.rotate {
+    transform: rotate(180deg);
 }
 
 /* TASK ITEM */
@@ -260,6 +270,7 @@ body::before {
     justify-content: center;
     padding: 6px 10px;
     z-index: 100;
+    transition: all 0.25 ease-in-out;
 }
 
 .btn-container button:hover {
@@ -340,7 +351,7 @@ body::before {
 }
 
 .completed-tasks {
-    height: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -349,6 +360,16 @@ body::before {
     font-weight: 500;
     list-style-type: none;
     text-wrap: nowrap;
+    margin: 10px;
+}
+
+.completed-tasks::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
+    pointer-events: none;
 }
 
 .completed-list-item {

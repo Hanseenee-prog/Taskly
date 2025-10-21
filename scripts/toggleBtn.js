@@ -37,7 +37,8 @@ export function toggleTaskControls() {
     document.querySelectorAll('.js-list-toggler').forEach((toggler) => {
         toggler.addEventListener('click', () => {
             const parent = toggler.parentElement.parentElement;
-            showOrHideControls(parent.querySelector('.btn-container'))
+            showOrHideControls(parent.querySelector('.btn-container'));
+            toggler.classList.toggle('rotate');
         })
     })
 
@@ -46,7 +47,13 @@ export function toggleTaskControls() {
             activeContainer.classList.add('hidden');
             activeBtnContainer = null;
         } else {
-            document.querySelectorAll('.btn-container').forEach((container) => container.classList.add('hidden'));
+            document.querySelectorAll('.btn-container').forEach((container) => {
+                container.classList.add('hidden');
+                document.querySelectorAll('.list-toggler').forEach(toggler => {
+                    toggler.classList.remove('rotate');
+                })
+            });
+
             activeContainer.classList.remove('hidden');
             activeBtnContainer = activeContainer;
         }
