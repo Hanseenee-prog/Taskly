@@ -75,6 +75,7 @@
                         <path d="M3 18h6v-2H3v2zM3 6v2h18V6H3zm0 7h12v-2H3v2z"/>
                     </svg>
                 </div>
+
                 <div class="reset" id="reset">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
@@ -120,6 +121,7 @@
         </div>
     </main>
     
+    <!-- Default dialog box for forms -->
     <dialog class="dialog-box" id="defaultDialog">
         <div class="dialog-box-contents">
             <span>Are you sure you want to discard?</span>
@@ -128,6 +130,7 @@
         </div>
     </dialog>
 
+    <!-- Reset options dialog box -->
     <dialog class="dialog-box" id="resetOptionsDialog">
         <div class="dialog-box-contents">
             <span>Which do you want to Reset?</span>
@@ -149,6 +152,32 @@
             </div>
         </div>
     </dialog>
+
+    <!-- Sort dropdown -->
+    <div class="sort-dropdown hidden">
+        <p class="dropdown-title">Sort By</p>
+        <div class="sort-options">
+            <label class="sort-option">
+                <input type="radio" name="sort" value="date-oldest">
+                <span>Date (oldest first)</span>
+            </label>
+
+            <label class="sort-option">
+                <input type="radio" name="sort" value="date-newest" checked>
+                <span>Date (newest first)</span>
+            </label>
+
+            <label class="sort-option">
+                <input type="radio" name="sort" value="name-asc">
+                <span>Name (A-Z)</span>
+            </label>
+
+            <label class="sort-option">
+                <input type="radio" name="sort" value="name-desc">
+                <span>Name (Z-A)</span>
+            </label>
+        </div>
+    </div>
 
     <script src="scripts/utils/dayjs.min.js"></script>
     <script type="module" src="scripts/scripts.js"></script>

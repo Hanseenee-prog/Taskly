@@ -1,5 +1,6 @@
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
 import { addTask } from './display/addOrUpdateTask.js';
+import { setupSortButton } from './display/popups.js';
 import { toggleTheme } from './toggleBtn.js';
 import { setupResetButton } from './taskControls.js';
 
@@ -12,6 +13,7 @@ displayTasks();
 displayCompletedTasks();
 addTask();
 setupResetButton();
+setupSortButton();
 
 pendingTasksBtn.style.display = 'none';
 
