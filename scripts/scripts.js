@@ -3,6 +3,7 @@ import { addTask } from './display/addOrUpdateTask.js';
 import { setupSortButton } from './display/popups.js';
 import { toggleTheme } from './toggleBtn.js';
 import { setupResetButton } from './taskControls.js';
+import { requestNotificationPermission, startNotificationsChecker } from './display/notification.js';
 
 toggleTheme();
 
@@ -14,6 +15,8 @@ displayTasks();
 displayCompletedTasks();
 addTask();
 setupResetButton();
+requestNotificationPermission();
+startNotificationsChecker();
 
 pendingTasksBtn.style.display = 'none';
 

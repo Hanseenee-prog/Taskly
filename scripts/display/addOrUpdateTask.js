@@ -104,12 +104,21 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
         time: timeValue,
         date: dateValue
       });
+
+      // Reset notification flags if time or date changed
+      if (matchingTask.date !== dateValue || matchingTask.time !== timeValue) {
+        matchingTask.notified = false;
+        matchingTask.dueNotified = false;
+        saveToStorage();
+      }
     } else {
       tasks.unshift({
         listId: `task-${Date.now()}`,
         name: nameValue,
         time: timeValue,
-        date: dateValue
+        date: dateValue,
+        notified: false,
+        dueNotified: false
       });
     }
     
@@ -166,9 +175,15 @@ function handleInputLimit() {
 }
 
 export function showPopups(popup) {
-  setTimeout(() => {
+  if (popup !== '.notifications-popup') {
+    setTimeout(() => {
       document.querySelector(popup).classList.add('hidden');
     }, 1000);
-    
+  }
+
+  setTimeout(() => {
+      document.querySelector(popup).classList.add('hidden');
+  }, 3000);
+ 
   document.querySelector(popup).classList.remove('hidden');
 };
