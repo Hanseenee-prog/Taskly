@@ -92,6 +92,42 @@ body::before {
     height: 15px;
 }
 
+.notifications-popup {
+    background: rgb(252, 78, 78);
+    backdrop-filter: blur(50px);
+    width: 60%;
+    position: relative;
+    left: 20%;
+    border-radius: 5px !important;
+    line-height: 30px;
+    display: flex !important;
+    flex-direction: column !important;
+    border: none;
+    font-size: clamp(15px, 13px, 11px);
+    padding: 10px;
+}
+
+.notifications-popup .close-notification {
+    position: relative;
+    background: transparent;
+    border: 2px solid var(--font-color);
+    border-radius: 5px;
+    align-self: flex-end;
+    padding: 0 2px;
+    text-align: center;
+}
+
+.notifications-popup .close-notification svg {
+    fill: var(--font-color);
+    width: 18px;
+    height: 18px;
+    margin: 0 -1px;
+}
+
+.notifications-popup .close-notification:hover svg {
+    scale: 1.1;
+}
+
 .container-head {
     height: 50px;
     width: 100%;
@@ -153,7 +189,7 @@ body::before {
     width: 100%;
     background: var(--container-body-clr);
     backdrop-filter: blur(15px);
-    border: 1px solid rgba(255,255,255,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 16px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     height: 300px;
@@ -219,7 +255,7 @@ body::before {
 
 .list-toggler {
     transform: rotate(0deg);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.1s ease-in-out;
     cursor: pointer;
 }
 
@@ -378,15 +414,6 @@ body::before {
     margin: 10px;
 }
 
-.completed-tasks::after {
-    content: "";
-    position: sticky;
-    bottom: 0;
-    height: 40px;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
-    pointer-events: none;
-}
-
 .completed-list-item {
     width: 100%;
 }
@@ -437,6 +464,11 @@ body::before {
     background: var(--delete-btn-clr);
     border-radius: 15px;
     padding: 11px;
+    transition: opacity 0.3s ease;
+}
+
+.completed-tasks-delete-btn:hover {
+    opacity: 0.8;
 }
 
 .completed-tasks-delete-btn svg {
@@ -513,12 +545,16 @@ input[type="text"] {
 form input {
     width: 100%;
     height: 70%;
-    border: 2px solid rgba(255,255,255,0.4);
+    border: 2px solid rgba(255, 255, 255, 0.4);
     border-radius: 5px;
     padding: 0 10px;
     background: rgba(255,255,255,0.15);
     color: var(--font-color);
     line-height: normal;
+}
+
+form input:focus {
+    border: 2px solid rgba(255, 255, 255, 0.6);
 }
 
 .close {
@@ -543,6 +579,11 @@ form input {
     height: clamp(33px, 28px, 25px);
     font-size: 16px;
     margin: -10px;
+    transition: opacity 0.3s ease;
+}
+
+.add-task-btn:hover {
+    opacity: 0.9;
 }
 
 /* Dialog box */
@@ -750,4 +791,20 @@ form input {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
+}
+
+.list-item.highlight {
+    animation: highlightPulse 2s ease;
+}
+
+@keyframes highlightPulse {
+    0%, 100% {
+        background: transparent;
+        transform: scale(1);
+    }
+    50% {
+        background: rgba(189, 189, 189, 0.261);
+        transform: scale(1.02);
+        box-shadow: 0 0 20px rgba(78, 78, 75, 0.5);
+    }
 }

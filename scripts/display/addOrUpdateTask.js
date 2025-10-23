@@ -99,6 +99,9 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
     if (!nameValue || !timeValue || !dateValue) return;
     
     if (isEditMode && matchingTask) {
+      const oldDate = matchingTask.date;
+      const oldTime = matchingTask.time;
+
       Object.assign(matchingTask, {
         name: nameValue,
         time: timeValue,
@@ -106,7 +109,7 @@ function addOrUpdateTask(name, time, date, isEditMode = false, matchingTask = nu
       });
 
       // Reset notification flags if time or date changed
-      if (matchingTask.date !== dateValue || matchingTask.time !== timeValue) {
+      if (oldDate !== dateValue || oldTime !== timeValue) {
         matchingTask.notified = false;
         matchingTask.dueNotified = false;
         saveToStorage();
@@ -183,7 +186,7 @@ export function showPopups(popup) {
 
   setTimeout(() => {
       document.querySelector(popup).classList.add('hidden');
-  }, 3000);
+  }, 10000);
  
   document.querySelector(popup).classList.remove('hidden');
 };

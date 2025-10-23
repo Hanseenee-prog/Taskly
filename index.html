@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taskly</title>
     <link rel="apple-touch-icon" href="imgs/apple-touch-icon.png">
-    <link rel="shortcut icon" href="imgs/Taskly-logo-light.svg" sizes="any" type="image/svg+xml">
+    <link rel="shortcut icon" href="imgs/Taskly-logo.svg" sizes="any" type="image/svg+xml">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    <meta name="mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,14 +29,19 @@
                     <path d="M5 13l4 4L19 7" />
                 </svg> Done
             </div>
-            <div class="notifications-popup done hidden">
-                <strong>You've blocked notifications for this site. Go to site settings > Notifications > Allow</strong>
-            </div>
+            <dialog class="notifications-popup">
+                <button class='close-notification'>
+                    <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                </button>
+                <p>You've blocked notifications for this site. Go to site settings > Notifications > Allow</p>
+            </dialog>
         </div>
         
         <div class="container-head">
             <p class="header">
-                <img src="imgs/Taskly-logo-dark.svg"/>
+                <img src="imgs/Taskly-logo.svg"/>
                 <img src="imgs/Taskly-writing-dark.svg"/>
             </p>
             

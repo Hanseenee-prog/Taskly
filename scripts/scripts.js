@@ -5,6 +5,27 @@ import { toggleTheme } from './toggleBtn.js';
 import { setupResetButton } from './taskControls.js';
 import { requestNotificationPermission, startNotificationsChecker } from './display/notification.js';
 
+// Register Service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(registration => {
+        console.log('Registered', registration.scope);
+      })
+      .catch(error => console.log('Failed', error))
+  })
+}
+
+function closePopup() {
+  const closeBtn = document.querySelector('.close-notification');
+  const dialogBox = document.querySelector('.notifications-popup');
+
+  closeBtn.addEventListener('click', () => {
+    dialogBox.classList.add('hidden');
+  });
+}
+
+closePopup();
 toggleTheme();
 
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
