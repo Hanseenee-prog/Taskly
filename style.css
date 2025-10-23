@@ -55,6 +55,72 @@ body::before {
     inset: 0;
 }
 
+.install-btn {
+    position: fixed;
+    top: 10px;
+    right: 5%;
+    background: var(--container-accent-clr);
+    border-radius: 50px;
+    padding: 7px 10px;
+    border: none;
+    color: var(--font-color);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+.install-btn.show-install {
+    animation: showInstall 0.7s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+.install-btn.hide-install {
+    animation: hideInstall 0.7s ease-in-out forwards;
+    animation-delay: 1s;
+    pointer-events: none;
+}
+
+.install-btn:hover {
+    opacity: 0.9;
+}
+
+.install-btn svg {
+    width: 18px;
+    height: 18px;
+    margin-right: 5px;
+}
+
+.install-btn p {
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+@keyframes showInstall {
+    from {
+        width: 0%;
+        opacity: 0;
+    }
+    to {
+        width: 20%;
+        opacity: 1;
+    }
+}
+
+@keyframes hideInstall {
+    from {
+        width: 20%;
+        opacity: 1;
+    }
+    to {
+         width: 0%;
+        opacity: 0;
+    }
+}
+
 .container {
     width: clamp(300px, 70vw, 600px);
     display: flex;
@@ -432,9 +498,13 @@ body::before {
 }
 
 .list-item-container.active .completed-task-body {
-    left: -5%;
+    left: -10%;
     transform: translate(0%);
     z-index: -20;
+}
+
+.list-item-container.active .completed-tasks-delete {
+    left: -7%;
 }
 
 .completed-task-body .task-name{

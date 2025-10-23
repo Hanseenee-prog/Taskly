@@ -1,4 +1,4 @@
-const CACHE_NAME = 'taskly-v2';
+const CACHE_NAME = 'taskly-v1';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -108,24 +108,27 @@ self.addEventListener('push', event => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
-// NOTIFICATION CLICK
-self.addEventListener('notificationclick', event => {
-  event.notification.close();
-  const taskId = event.notification.data?.taskId;
-
-  event.waitUntil(
-    clients.matchAll({ type: 'window', includeUncontrolled: true })
-      .then(clientList => {
-        for (const client of clientList) {
-          if (client.url.includes(self.location.origin) && 'focus' in client) {
-            client.focus();
-            client.postMessage({ action: 'scrollToTask', taskId });
-            return;
-          }
-        }
-        if (clients.openWindow) {
-          return clients.openWindow('/');
-        }
-      })
-  );
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    const taskId = event.notification.data?.taskId;
+    
+    event.waitUntil(
+        clients.matchAll({ type: 'window', includeUncontrolled: true })
+            .then(clientList => {
+                for (let client of clientList) {
+                    if (client.url.includes(self.location.origin) && 'focus' in client) {
+                        client.focus();
+                        client.postMessage({ action: 'scrollToTask', taskId });
+                        return;
+                    }
+                }
+                if (clients.openWindow) {
+                    return clients.openWindow('/').then(windowClient => {
+                        setTimeout(() => {
+                            windowClient.postMessage({ action:'scrollToTask', taskId});
+                        }, 2000);
+                    })
+                }
+            })
+    );
 });

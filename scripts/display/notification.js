@@ -62,8 +62,8 @@ async function showNotifications(task, isDue = false) {
     // Show notification via Service Worker
     registration.showNotification(title, {
         body,
-        icon: '/imgs/Taskly-logo-dark.svg',
-        badge: '/imgs/Taskly-logo-dark.svg',
+        icon: '/imgs/Taskly-logo.svg',
+        badge: '/imgs/Taskly-logo.svg',
         tag: task.listId,
         requireInteraction: true, // stays until user closes
         data: {
