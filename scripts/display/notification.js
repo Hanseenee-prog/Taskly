@@ -47,6 +47,7 @@ function showNotifications(task, isDue = false) {
     const notifications = new Notification(title, {
         body: body,
         tag: task.listId,
+        icon: 'images',
         requireInteraction: true, 
         data: { taskId: task.listId}
     });

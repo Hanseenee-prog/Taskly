@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128.44325mm"
+   height="27.58609mm"
+   viewBox="0 0 128.44325 27.58609"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <linearGradient
+       id="swatch3">
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1;"
+         offset="0"
+         id="stop3" />
+    </linearGradient>
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-201.51808,-16.663147)">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:3.175px;font-family:Fredoka;-inkscape-font-specification:'Fredoka, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;writing-mode:lr-tb;direction:ltr;text-anchor:start;white-space:pre;inline-size:25.5296;display:inline;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="273.89783"
+       y="67.807106"
+       id="text10"
+       transform="matrix(12.000754,0,0,12.000754,-3086.346,-770.32539)"><tspan
+         x="273.89783"
+         y="67.807106"
+         id="tspan2">TASKLY</tspan></text>
+  </g>
+</svg>

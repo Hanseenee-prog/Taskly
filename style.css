@@ -107,6 +107,21 @@ body::before {
     letter-spacing: 1px;
 }
 
+.header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.header img {
+    width: 30px;
+    aspect-ratio: 1;
+}
+
+.header img:nth-of-type(2) {
+    width: 60px;
+}
+
 .header-controls {
     display: flex;
     flex-direction: row-reverse;
