@@ -6,17 +6,15 @@ function isInStandaloneMode() {
   return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 }
 
-// Show animation
 function showInstallButton() {
   installBtn.classList.remove('hide-install');
-  void installBtn.offsetWidth; // force reflow for animation
+  void installBtn.offsetWidth; 
   installBtn.classList.add('show-install');
 }
 
-// Hide animation
 function hideInstallButton() {
   installBtn.classList.remove('show-install');
-  void installBtn.offsetWidth; // force reflow for smooth transition
+  void installBtn.offsetWidth; 
   installBtn.classList.add('hide-install');
 }
 
@@ -53,7 +51,6 @@ installBtn.addEventListener('click', async () => {
   if (outcome === 'accepted') {
     deferredPrompt = null;
   } else {
-    // If user dismisses, show again later if desired
     setTimeout(showInstallButton, 10000);
   }
 });

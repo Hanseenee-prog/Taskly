@@ -5,17 +5,18 @@ const urlsToCache = [
   '/style.css',
   '/manifest.json',
 
-  // JS
-  '/scripts/scripts.js',
-  '/scripts/taskControls.js',
-  '/scripts/tasks.js',
-  '/scripts/toggleBtn.js',
-  '/scripts/display/addorUpdateTask.js',
-  '/scripts/display/displayTasks.js',
-  '/scripts/display/notification.js',
-  '/scripts/display/popups.js',
-  '/scripts/utils/dateFormatter.js',
-  '/scripts/utils/dayjs.min.js',
+    //JS
+    '/scripts/scripts.js',
+    '/scripts/taskControls.js',
+    '/scripts/tasks.js',
+    '/scripts/toggleBtn.js',
+    '/scripts/display/addorUpdateTask.js',
+    '/scripts/display/displayTasks.js',
+    '/scripts/display/notification.js',
+    '/scripts/display/popups.js',
+    '/scripts/display/installUI.js',
+    '/scripts/utils/dateFormatter.js',
+    '/scripts/utils/dayjs.min.js',
 
   // Images
   '/imgs/apple-touch-icon.png',
