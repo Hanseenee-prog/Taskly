@@ -7,12 +7,11 @@ export async function requestNotificationPermission() {
     const permission = await Notification.requestPermission();
     console.log(permission);
 
-    if (permission === 'granted') {
-        checkDueTasks();
-    } else if (permission === 'denied') {
+    if (permission !== 'granted') {
         showPopups('.notifications-popup');
+        return;
     }
-
+    checkDueTasks();
     return permission;
 }
 
