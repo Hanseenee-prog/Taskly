@@ -63,7 +63,7 @@ async function showNotifications(task, isDue = false) {
         body,
         icon: '/imgs/Taskly-logo.svg',
         badge: '/imgs/Taskly-logo.svg',
-        tag: task.listId,
+        tag: `${task.listId}-${Date.now()}`,
         requireInteraction: true, // stays until user closes
         data: {
             taskId: task.listId,
@@ -78,6 +78,8 @@ async function showNotifications(task, isDue = false) {
 export function startNotificationsChecker() {
     checkDueTasks();
     setInterval(checkDueTasks, 10000);
+
+    setInterval(updateBadge, 60000);
 }
 
 function handleScrollIntoView(taskId) {
@@ -99,4 +101,10 @@ if('serviceWorker' in navigator) {
         const { action, taskId } = e.data || {};
         if (action === 'scrollToTask' && taskId) handleScrollIntoView(taskId);
     });
+}
+
+function updateBadge() {
+  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
+    navigator.serviceWorker.controller.postMessage({ action: 'updateBadge' });
+  }
 }

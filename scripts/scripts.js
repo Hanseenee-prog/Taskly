@@ -5,6 +5,7 @@ import { toggleTheme } from './toggleBtn.js';
 import { setupResetButton } from './taskControls.js';
 import { requestNotificationPermission, startNotificationsChecker } from './display/notification.js';
 import './display/installUI.js';
+import './display/badge.js';
 
 // Register Service worker
 if ('serviceWorker' in navigator) {

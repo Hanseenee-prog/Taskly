@@ -44,6 +44,15 @@ export function loadFromStorage() {
         date: '2025-10-08'      
     }];
   }
+
+  if (!'caches' in window) return;
+
+  caches.open('taskly-data').then(cache => {
+    const tasksData = { tasks, completedTasks, lastUpdated: new Date().toISOString() };
+    cache.put('/tasks-data', new Response(JSON.stringify(tasksData), {
+      headers: { 'Content-Type': 'application/json' }
+    }));
+  });
 }
 
 export function saveToStorage() {

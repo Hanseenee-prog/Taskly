@@ -15,6 +15,7 @@ const urlsToCache = [
     '/scripts/display/notification.js',
     '/scripts/display/popups.js',
     '/scripts/display/installUI.js',
+    '/scripts/display/badge.js',
     '/scripts/utils/dateFormatter.js',
     '/scripts/utils/dayjs.min.js',
 
@@ -37,7 +38,6 @@ self.addEventListener('install', e => {
       .then(async cache => {
         console.log('Opened cache');
 
-        // safer: cache each file individually
         for (const url of urlsToCache) {
           try {
             await cache.add(url);
@@ -54,20 +54,21 @@ self.addEventListener('install', e => {
 
 // ACTIVATE
 self.addEventListener('activate', e => {
-  console.log("Activating...");
   e.waitUntil(
-    caches.keys().then(names => {
-      return Promise.all(
-        names.map(name => {
-          if (name !== CACHE_NAME) {
-            console.log(`Deleting old cache: ${name}`);
-            return caches.delete(name);
-          }
-        })
+    (async () => {
+      const names = await caches.keys();
+      await Promise.all(
+        names.map(name => name !== CACHE_NAME && caches.delete(name))
       );
-    }).then(() => self.clients.claim())
+      await self.clients.claim();
+      await updateBadgeFromCache(); 
+    })()
   );
 });
+
+self.addEventListener('periodicsync', e => {
+  if (e.tag === 'update-badge') e.waitUntil(updateBadgeFromCache());
+})
 
 // FETCH
 self.addEventListener('fetch', e => {
@@ -109,27 +110,76 @@ self.addEventListener('push', event => {
   event.waitUntil(self.registration.showNotification(title, options));
 });
 
-self.addEventListener('notificationclick', (event) => {
-    event.notification.close();
-    const taskId = event.notification.data?.taskId;
-    
-    event.waitUntil(
-        clients.matchAll({ type: 'window', includeUncontrolled: true })
-            .then(clientList => {
-                for (let client of clientList) {
-                    if (client.url.includes(self.location.origin) && 'focus' in client) {
-                        client.focus();
-                        client.postMessage({ action: 'scrollToTask', taskId });
-                        return;
-                    }
-                }
-                if (clients.openWindow) {
-                    return clients.openWindow('/').then(windowClient => {
-                        setTimeout(() => {
-                            windowClient.postMessage({ action:'scrollToTask', taskId});
-                        }, 2000);
-                    })
-                }
-            })
-    );
+
+// NOTIFICATION CLICK
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  const taskId = event.notification.data?.taskId;
+
+  event.waitUntil((async () => {
+    await updateBadgeFromCache();
+
+    const clientList = await clients.matchAll({ type: 'window', includeUncontrolled: true });
+
+    for (let client of clientList) {
+      if (client.url.includes(self.location.origin) && 'focus' in client) {
+        try {
+          await client.focus();
+          client.postMessage({ action: 'scrollToTask', taskId });
+          return;
+        } catch (err) {
+          console.warn('Focus blocked:', err);
+        }
+      }
+    }
+
+    if (clients.openWindow) {
+      try {
+        const windowClient = await clients.openWindow('/');
+        setTimeout(() => windowClient?.postMessage({ action: 'scrollToTask', taskId }), 2000);
+      } catch (err) {
+        console.warn('Open window blocked:', err);
+      }
+    }
+  })());
+});
+
+// BADGE UPDATE
+async function updateBadgeFromCache() {
+  try {
+    const cache = await caches.open('taskly-data');
+    const response = await cache.match('/tasks-data');
+    if (!response) return;
+
+    const data = await response.json();
+    const overdueCount = countOverdueTasks(data.tasks || []);
+
+    if ('setAppBadge' in self.navigator) {
+      if (overdueCount > 0) {
+        await self.navigator.setAppBadge(overdueCount);
+        console.log(`✅ Badge set to ${overdueCount}`);
+      } else {
+        await self.navigator.clearAppBadge();
+        console.log('✅ Badge cleared');
+      }
+    }
+  } catch (err) {
+    console.error('❌ Badge update failed:', err);
+  }
+}
+
+function countOverdueTasks(tasks) {
+  const now = new Date();
+  return Array.isArray(tasks)
+    ? tasks.filter(task => {
+        const taskDateTime = new Date(`${task.date} ${task.time}`);
+        return taskDateTime < now && !task.completed;
+      }).length
+    : 0;
+}
+
+self.addEventListener('message', (e) => {
+  if (e.data && e.data.action === 'updateBadge') {
+    e.waitUntil(updateBadgeFromCache());
+  }
 });

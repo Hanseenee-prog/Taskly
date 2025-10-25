@@ -41,3 +41,12 @@ export function autoCheckOverdue(tasks) {
     });
   }, 600);
 };
+
+export function countOverdueTasks(tasks) {
+  const now = dayjs();
+
+  return tasks.filter((task) => {
+    const taskDateTime = dayjs(`${task.date} ${task.time}`);
+    return taskDateTime.isBefore(now);
+  }).length;
+}
