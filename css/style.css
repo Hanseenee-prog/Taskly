@@ -823,6 +823,106 @@ form input:focus {
     font-size: 0.9em;
 }
 
+/* Update app styles */
+.update-popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-120px);
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 90%;
+  width: 400px;
+}
+
+.update-popup.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.update-popup-content {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: white;
+}
+
+.update-icon {
+  display: flex;
+  justify-content: center;
+  animation: pulse 2s infinite;
+}
+
+.update-icon svg {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.update-text h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.update-text p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.update-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.update-buttons button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.update-btn-later {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.update-btn-later:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.update-btn-now {
+  background: white;
+  color: #667eea;
+}
+
+.update-btn-now:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.update-popup.updating .update-btn-now {
+  opacity: 0.7;
+  cursor: wait;
+}
+
 /* Dynamically added classes */
 .toggle {
     top: 10%;

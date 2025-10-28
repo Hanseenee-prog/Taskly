@@ -3,7 +3,7 @@ import { addTask } from './display/addOrUpdateTask.js';
 import { setupSortButton } from './display/popups.js';
 import { toggleTheme } from './toggleBtn.js';
 import { setupResetButton } from './taskControls.js';
-import { requestNotificationPermission, startNotificationsChecker } from './display/notification.js';
+import { requestNotificationPermission, startNotificationsChecker, setupUpdateNotification } from './display/notification.js';
 import './display/installUI.js';
 import './display/badge.js';
 
@@ -33,7 +33,7 @@ toggleTheme();
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
-// splashScreenAnimation();
+setupUpdateNotification();
 setupSortButton();
 displayTasks();
 displayCompletedTasks();

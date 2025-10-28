@@ -169,6 +169,10 @@ self.addEventListener('message', e => {
     cachedTasks = tasks || [];
     updateBadgeFromCachedTasks();
   }
+
+  if (e.data && e.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // BADGE UPDATE
