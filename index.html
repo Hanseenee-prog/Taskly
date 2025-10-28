@@ -211,10 +211,14 @@
 
     <script>
         const splashScreen = document.querySelector('.splash-screen');
-        const isStandAlone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
-        if (!isStandAlone) return;
-        else splashScreen.style.visibility = 'visible';
+        const isStandalone = 
+            window.matchMedia('(display-mode: standalone)').matches || 
+            window.navigator.standalone === true ||
+            document.referrer.includes('android-app://');
+        
+        if (isStandalone && splashScreen) {
+            splashScreen.style.visibility = 'visible';
+        }
     </script>
     <script src="scripts/utils/dayjs.min.js"></script>
     <script type="module" src="scripts/scripts.js" defer></script>
