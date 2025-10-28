@@ -2,22 +2,25 @@ const CACHE_NAME = 'taskly-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/style.css',
   '/manifest.json',
 
-    //JS
-    '/scripts/scripts.js',
-    '/scripts/taskControls.js',
-    '/scripts/tasks.js',
-    '/scripts/toggleBtn.js',
-    '/scripts/display/addorUpdateTask.js',
-    '/scripts/display/displayTasks.js',
-    '/scripts/display/notification.js',
-    '/scripts/display/popups.js',
-    '/scripts/display/installUI.js',
-    '/scripts/display/badge.js',
-    '/scripts/utils/dateFormatter.js',
-    '/scripts/utils/dayjs.min.js',
+  // CSS
+  '/css/style.css',
+  '/css/splash-screen.css',
+
+  //JS
+  '/scripts/scripts.js',
+  '/scripts/taskControls.js',
+  '/scripts/tasks.js',
+  '/scripts/toggleBtn.js',
+  '/scripts/display/addorUpdateTask.js',
+  '/scripts/display/displayTasks.js',
+  '/scripts/display/notification.js',
+  '/scripts/display/popups.js',
+  '/scripts/display/installUI.js',
+  '/scripts/display/badge.js',
+  '/scripts/utils/dateFormatter.js',
+  '/scripts/utils/dayjs.min.js',
 
   // Images
   '/imgs/apple-touch-icon.png',

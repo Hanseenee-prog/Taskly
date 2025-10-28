@@ -9,9 +9,22 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#667eea">
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/splash-screen.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Splash screen -->
+    <div class="splash-screen">
+        <div class="splash-content">
+            <div class="logo-bg">
+                <img class="splash-logo" src="imgs/Taskly-logo.svg"/>
+            </div>
+            <img class="splash-text" src="imgs/Taskly-writing-dark.svg"/>
+        </div>
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+    </div>
+
     <button id="installBtn" class="install-btn">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 3v12m0 0l-4-4m4 4l4-4" />
@@ -196,7 +209,14 @@
         </div>
     </div>
 
+    <script>
+        const splashScreen = document.querySelector('.splash-screen');
+        const isStandAlone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        if (!isStandAlone) return;
+        else splashScreen.style.visibility = 'visible';
+    </script>
     <script src="scripts/utils/dayjs.min.js"></script>
-    <script type="module" src="scripts/scripts.js"></script>
+    <script type="module" src="scripts/scripts.js" defer></script>
 </body>
 </html>

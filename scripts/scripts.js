@@ -33,6 +33,7 @@ toggleTheme();
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
+// splashScreenAnimation();
 setupSortButton();
 displayTasks();
 displayCompletedTasks();
@@ -40,6 +41,8 @@ addTask();
 setupResetButton();
 requestNotificationPermission();
 startNotificationsChecker();
+completedTasksAnimation();
+displayCompletedTasks();
 
 pendingTasksBtn.style.display = 'none';
 
@@ -64,6 +67,3 @@ function completedTasksAnimation() {
     activeTab = completedTasksBtn.id;
   });
 }
-
-completedTasksAnimation();
-displayCompletedTasks();
