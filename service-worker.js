@@ -29,6 +29,9 @@ const urlsToCache = [
   '/imgs/Taskly-writing-dark.svg'
 ];
 
+let cachedTasks = [];
+let shouldUpdateBadge = false;
+
 // INSTALL
 self.addEventListener('install', e => {
   console.log("Installing...");
@@ -61,13 +64,13 @@ self.addEventListener('activate', e => {
         names.map(name => name !== CACHE_NAME && caches.delete(name))
       );
       await self.clients.claim();
-      await updateBadgeFromCache(); 
+      await updateBadgeFromCachedTasks(); 
     })()
   );
 });
 
 self.addEventListener('periodicsync', e => {
-  if (e.tag === 'update-badge') e.waitUntil(updateBadgeFromCache());
+  if (e.tag === 'update-badge') e.waitUntil(updateBadgeFromCachedTasks());
 })
 
 // FETCH
@@ -117,8 +120,6 @@ self.addEventListener('notificationclick', event => {
   const taskId = event.notification.data?.taskId;
 
   event.waitUntil((async () => {
-    await updateBadgeFromCache();
-
     const clientList = await clients.matchAll({ type: 'window', includeUncontrolled: true });
 
     for (let client of clientList) {
@@ -144,25 +145,43 @@ self.addEventListener('notificationclick', event => {
   })());
 });
 
+self.addEventListener('message', e => {
+  const { action, tasks, appActive } = e.data || {};
+
+  if (action === 'syncTasks') {
+    cachedTasks = tasks || [];
+    if (!appActive && shouldUpdateBadge) updateBadgeFromCachedTasks();
+  }
+
+  if (action === 'takeOverBadge') {
+    shouldUpdateBadge = true;
+    updateBadgeFromCachedTasks();
+  }
+
+  if (action === 'releaseBadge') {
+    shouldUpdateBadge = false;
+  }
+
+  if (action === 'updateBadgeNow') {
+    cachedTasks = tasks || [];
+    updateBadgeFromCachedTasks();
+  }
+});
+
 // BADGE UPDATE
-async function updateBadgeFromCache() {
+async function updateBadgeFromCachedTasks() {
   try {
-    const cache = await caches.open('taskly-data');
-    const response = await cache.match('/tasks-data');
-    if (!response) return;
+    const overdueCount = countOverdueTasks(cachedTasks);
+    if (!'setAppBadge' in self.navigator) return;
 
-    const data = await response.json();
-    const overdueCount = countOverdueTasks(data.tasks || []);
-
-    if ('setAppBadge' in self.navigator) {
-      if (overdueCount > 0) {
-        await self.navigator.setAppBadge(overdueCount);
-        console.log(`✅ Badge set to ${overdueCount}`);
-      } else {
-        await self.navigator.clearAppBadge();
-        console.log('✅ Badge cleared');
-      }
+    if (overdueCount > 0) {
+      await self.navigator.setAppBadge(overdueCount);
+      console.log(`✅ Badge set to ${overdueCount}`);
+    } else {
+      await self.navigator.clearAppBadge();
+      console.log('✅ Badge cleared');
     }
+    
   } catch (err) {
     console.error('❌ Badge update failed:', err);
   }
@@ -177,9 +196,3 @@ function countOverdueTasks(tasks) {
       }).length
     : 0;
 }
-
-self.addEventListener('message', (e) => {
-  if (e.data && e.data.action === 'updateBadge') {
-    e.waitUntil(updateBadgeFromCache());
-  }
-});

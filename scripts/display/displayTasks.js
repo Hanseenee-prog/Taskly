@@ -3,7 +3,7 @@ import { setupTaskControls, setupCompletedTasksControls } from '../taskControls.
 import { toggleTaskControls } from '../toggleBtn.js';
 import { dateFormatter, timeFormatter, isOverdue, autoCheckOverdue, countOverdueTasks } from '../utils/dateFormatter.js';
 import { applySort } from './popups.js';
-import { updateBadge } from './badge.js';
+import { updateBadgeImmediately } from './badge.js';
 
 export function displayTasks() {
     if (tasks.length !== 0) {
@@ -60,15 +60,14 @@ export function displayTasks() {
             document.querySelector('#listItems').innerHTML += tasksHTML;
         })
         // Update badge
-        const overdueTasksCount = countOverdueTasks(tasks);
-        updateBadge(overdueTasksCount);
+        updateBadgeImmediately();
 
         toggleTaskControls();
         setupTaskControls();
     }
     else {
         document.querySelector('#listItems').innerHTML = '<div class="empty-message">You haven\'t added any tasks yet.</div>';
-        updateBadge(0);
+        updateBadgeImmediately();
     }
 }
 

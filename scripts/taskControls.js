@@ -1,6 +1,7 @@
 import { tasks, saveToStorage, completedTasks } from './tasks.js';
 import { displayTasks, displayCompletedTasks } from './display/displayTasks.js';
 import { updateTask, showPopups } from './display/addOrUpdateTask.js';
+import { updateBadgeImmediately } from './display/badge.js';
 
 function handleClick(e, sourceArray, onEdit, onDone) {
     const deleteBtn = e.target.closest('.js-delete-btn');
@@ -25,6 +26,7 @@ function handleClick(e, sourceArray, onEdit, onDone) {
         saveToStorage();
         displayTasks();
         displayCompletedTasks();
+        updateBadgeImmediately();
     }
 
     if (editBtn && onEdit) onEdit(matchingTask);
@@ -44,6 +46,7 @@ export function setupTaskControls() {
                 saveToStorage();
                 displayTasks();
                 displayCompletedTasks();
+                updateBadgeImmediately();
             }
         });
     }); 
@@ -127,6 +130,7 @@ function showResetOptions() {
             saveToStorage();
             displayTasks();
             displayCompletedTasks();
+            updateBadgeImmediately();
 
             document.querySelector('.deleted span').innerText = 'Cleared';
 

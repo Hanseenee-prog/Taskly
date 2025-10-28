@@ -2,6 +2,7 @@ import { saveToStorage, tasks } from '../tasks.js';
 import { completedTasksBtn } from '../scripts.js';
 import { displayTasks } from './displayTasks.js';
 import { applySort } from './popups.js';
+import { updateBadgeImmediately } from './badge.js';
 
 function showFormView() {
   if (!document.querySelector('#addOrEditTask')) return;
@@ -142,12 +143,14 @@ export function updateTask(matchingTask) {
   completedTasksBtn.style.display = 'none';
   const {name, time, date} = matchingTask;
   addOrUpdateTask(name, time, date, true, matchingTask);
+  updateBadgeImmediately();
 }
 
 export function addTask() {
   document.querySelector('#addNewTask').addEventListener('click', () => {
     addOrUpdateTask('', '', '', false);
     completedTasksBtn.style.display = 'none';
+    updateBadgeImmediately();
   });
 }
 

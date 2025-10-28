@@ -1,5 +1,6 @@
 import { saveToStorage, tasks } from "../tasks.js";
 import { showPopups } from "./addOrUpdateTask.js";
+import { updateBadgeImmediately } from './badge.js';
 
 export async function requestNotificationPermission() {
     if (!'Notification' in window && 'serviceWorker' in navigator) return;
@@ -22,18 +23,20 @@ export function checkDueTasks() {
 
     tasks.forEach(task => {
         const taskDateTime = dayjs(`${task.date} ${task.time}`);
-        const timeDiff = taskDateTime.diff(now, 'minute');
+        const timeDiff = taskDateTime.diff(now, 'minute', true);
 
-        if (timeDiff <= 5 && timeDiff > 4 && !task.notified) {
+        if (timeDiff <= 4.8 && timeDiff > 4 && !task.notified) {
             showNotifications(task);
             task.notified = true;
             saveToStorage();
+            updateBadgeImmediately();
         }
 
-        if (timeDiff <= 0 && timeDiff > -1 && !task.dueNotified) {
+        if (timeDiff <= -0.2 && timeDiff > -1 && !task.dueNotified) {
             showNotifications(task, true);
             task.dueNotified = true;
             saveToStorage();
+            updateBadgeImmediately();
         }
     })
 }
@@ -78,8 +81,7 @@ async function showNotifications(task, isDue = false) {
 export function startNotificationsChecker() {
     checkDueTasks();
     setInterval(checkDueTasks, 10000);
-
-    setInterval(updateBadge, 60000);
+    setInterval(updateBadgeImmediately, 60000);
 }
 
 function handleScrollIntoView(taskId) {
@@ -101,10 +103,4 @@ if('serviceWorker' in navigator) {
         const { action, taskId } = e.data || {};
         if (action === 'scrollToTask' && taskId) handleScrollIntoView(taskId);
     });
-}
-
-function updateBadge() {
-  if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-    navigator.serviceWorker.controller.postMessage({ action: 'updateBadge' });
-  }
 }

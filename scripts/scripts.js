@@ -14,7 +14,7 @@ if ('serviceWorker' in navigator) {
       .then(registration => {
         console.log('Registered', registration.scope);
       })
-      .catch(error => console.log('Failed', error))
+      .catch(error => console.log('Failed', error));
   })
 }
 
