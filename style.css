@@ -28,6 +28,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
 }
 
 ul {
@@ -493,7 +494,7 @@ body::before {
 
 .completed-task-body {
     width: 100%;
-    transition: all 0.5s ease;
+    transition: all 3s ease;
     text-decoration: line-through;
 }
 
@@ -521,7 +522,7 @@ body::before {
     place-items: center;
     cursor: pointer;
     opacity: 0;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .list-item-container.active .completed-tasks-delete {
@@ -696,10 +697,20 @@ form input:focus {
 
 #resetOptionsDialog .dialog-box-contents{
     height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#resetOptionsDialog .resetBtns {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
 }
 
 #resetOptionsDialog .reset-option {
-    width: 197%;
     margin: 5px 0;
     display: flex;
     align-items: center;
@@ -863,8 +874,9 @@ form input:focus {
     50% { opacity: 0.5; }
 }
 
-.list-item.highlight {
-    animation: highlightPulse 2s ease;
+.list-item.highlight .task-body {
+    animation: highlightPulse 4s ease;
+    background: transparent;
 }
 
 @keyframes highlightPulse {
@@ -873,8 +885,9 @@ form input:focus {
         transform: scale(1);
     }
     50% {
-        background: rgba(189, 189, 189, 0.261);
+        background: rgba(109, 208, 92, 0.652);
+        backdrop-filter: blur(10px);
         transform: scale(1.02);
-        box-shadow: 0 0 20px rgba(78, 78, 75, 0.5);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
     }
 }
