@@ -1,4 +1,4 @@
-const CACHE_NAME = 'taskly-v1.0.2';
+const CACHE_NAME = 'taskly-v1.0.3';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -119,34 +119,38 @@ self.addEventListener('push', event => {
 
 // NOTIFICATION CLICK
 self.addEventListener('notificationclick', event => {
-  event.notification.close();
-  const taskId = event.notification.data?.taskId;
+  const { notification } = event;
+  const { tag, data } = notification;
+  notification.close();
 
   event.waitUntil((async () => {
     const clientList = await clients.matchAll({ type: 'window', includeUncontrolled: true });
-
-    for (let client of clientList) {
-      if (client.url.includes(self.location.origin) && 'focus' in client) {
-        try {
+    const handleClient = async action => {
+      for (const client of clientList) {
+        if ('focus' in client) {
           await client.focus();
-          client.postMessage({ action: 'scrollToTask', taskId });
-          return;
-        } catch (err) {
-          console.warn('Focus blocked:', err);
+          client.postMessage(action);
+          return true;
         }
       }
-    }
-
-    if (clients.openWindow) {
-      try {
-        const windowClient = await clients.openWindow('/');
-        setTimeout(() => windowClient?.postMessage({ action: 'scrollToTask', taskId }), 2000);
-      } catch (err) {
-        console.warn('Open window blocked:', err);
+      if (clients.openWindow) {
+        const newClient = await clients.openWindow('/');
+        setTimeout(() => newClient?.postMessage(action), 2000);
+        return true;
       }
+      return false;
+    };
+
+    // Determine what to do based on tag
+    if (data?.taskId) {
+      await handleClient({ action: 'scrollToTask', taskId: data.taskId });
+    } 
+    else if (tag === 'taskly-update') {
+      await handleClient({ action: 'triggerUpdate' });
     }
   })());
 });
+
 
 self.addEventListener('message', e => {
   const { action, tasks, appActive } = e.data || {};

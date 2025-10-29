@@ -133,12 +133,25 @@ export function setupUpdateNotification() {
     })
 }
 
-function showUpdatePopup(registration) {
+async function showUpdatePopup(registration) {
     console.log('update available')
     const updatePopup = document.querySelector('.update-popup');
 
     updatePopup.classList.remove('hidden');
     setTimeout(() => updatePopup.classList.add('show'), 50);
+
+    // 🔔 Show browser notification about update
+    if (Notification.permission === 'granted') {
+        const swRegistration = await navigator.serviceWorker.ready;
+        swRegistration.showNotification("🔄 Taskly Update Available", {
+            body: "A new version of Taskly is ready! Tap to update now.",
+            icon: "/imgs/Taskly-logo-192.png",
+            badge: "/imgs/Taskly-logo-192.png",
+            vibrate: [400, 200, 400, 200, 600],
+            requireInteraction: true, // stays until user interacts
+            tag: "taskly-update"
+        });
+    }
 
     const laterBtn = updatePopup.querySelector('.update-btn-later');
     const updateBtn = updatePopup.querySelector('.update-btn-now');
@@ -147,7 +160,6 @@ function showUpdatePopup(registration) {
         updatePopup.classList.remove('show');
         setTimeout(() => updatePopup.classList.add('hidden'), 300);
     });
-    console.log('popup shown');
 
     updateBtn.addEventListener('click', () => {
         updatePopup.classList.add('updating');
@@ -161,3 +173,13 @@ navigator.serviceWorker.addEventListener('controllerchange', () => {
     refreshing = true;
     window.location.reload();
 });
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.addEventListener('message', e => {
+    if (e.data?.action === 'triggerUpdate') {
+      const popup = document.querySelector('.update-popup');
+      popup.classList.remove('hidden');
+      setTimeout(() => popup.classList.add('show'), 100);
+    }
+  });
+}
