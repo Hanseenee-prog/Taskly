@@ -17,15 +17,9 @@
             "sizes": "512x512"
         },
         {
-            "src": "imgs/Taskly-logo.svg",
-            "type": "image/svg+xml",
-            "sizes": "any",
-            "purpose": "maskable"
-        },
-        {
             "src": "imgs/Taskly-logo-square.png",
             "type": "image/png",
-            "sizes": "512x512",
+            "sizes": "any",
             "purpose": "maskable"
         },
         {
