@@ -72,7 +72,8 @@ async function showNotifications(task, isDue = false) {
             taskId: task.listId,
             url: window.location.origin
         },
-        vibrate: [500, 100, 500]
+        vibrate: [
+        500, 200, 500, 200, 1000, 300, 1000, 300, 2000]
     });
 
     console.log(`Notification shown for "${task.name}"`);
