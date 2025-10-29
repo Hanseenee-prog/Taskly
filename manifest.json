@@ -23,6 +23,12 @@
             "purpose": "maskable"
         },
         {
+            "src": "imgs/Taskly-logo-square.png",
+            "type": "image/png",
+            "sizes": "512x512",
+            "purpose": "maskable"
+        },
+        {
             "src": "imgs/apple-touch-icon.png",
             "type": "image/png",
             "sizes": "180x180"
