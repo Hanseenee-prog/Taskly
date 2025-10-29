@@ -139,6 +139,7 @@ export function setupUpdateNotification() {
 }
 
 function showUpdatePopup(newWorker) {
+    console.log('update available')
     const updatePopup = document.createElement('div');
     updatePopup.className = 'update-popup';
     updatePopup.innerHTML = `
@@ -170,6 +171,7 @@ function showUpdatePopup(newWorker) {
         updatePopup.classList.remove('show');
         setTimeout(() => updatePopup.remove(), 300);
     });
+    console.log('popup shown')
 
     updateBtn.addEventListener('click', () => {
         updatePopup.classList.add('updating');
