@@ -17,7 +17,8 @@
     gap: 0;
     overflow-x: hidden;
     z-index: 100;
-    animation: scaleAndMoveDown 1s ease-out 2.5s forwards;
+    padding: 10px;
+    animation: scaleAndMoveDown 1s ease-out 3.0s forwards;
 }
 
 .curtain {
