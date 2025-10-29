@@ -146,7 +146,7 @@ function showUpdatePopup(newWorker) {
         <div class="update-popup-content">
             <div class="update-icon">
                 <svg xmlns="http://www.w3org/200/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12 cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="10"/>
                     <path d="M12 6v614 2"/>
                 </svg>            
             </div>
