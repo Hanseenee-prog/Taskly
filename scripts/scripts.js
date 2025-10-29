@@ -10,12 +10,12 @@ import './display/badge.js';
 // Register Service worker
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('service-worker.js')
+    navigator.serviceWorker.register('/service-worker.js')
       .then(registration => {
-        console.log('Registered', registration.scope);
+        console.log('[App] Service Worker registered:', registration.scope);
       })
-      .catch(error => console.log('Failed', error));
-  })
+      .catch(error => console.log('[App] Service Worker registration failed:', error));
+  });
 }
 
 function closePopup() {
@@ -33,7 +33,6 @@ toggleTheme();
 export const pendingTasksBtn = document.querySelector('.pending-tasks-btn');
 export const completedTasksBtn = document.querySelector('.completed-tasks-btn');
 
-setupUpdateNotification();
 setupSortButton();
 displayTasks();
 displayCompletedTasks();
@@ -41,6 +40,7 @@ addTask();
 setupResetButton();
 requestNotificationPermission();
 startNotificationsChecker();
+setupUpdateNotification();
 completedTasksAnimation();
 displayCompletedTasks();
 
