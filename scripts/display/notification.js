@@ -2,6 +2,8 @@ import { saveToStorage, tasks } from "../tasks.js";
 import { showPopups } from "./addOrUpdateTask.js";
 import { updateBadgeImmediately } from './badge.js';
 
+let refreshing = false;
+
 export async function requestNotificationPermission() {
     if (!'Notification' in window && 'serviceWorker' in navigator) return;
 
@@ -107,75 +109,55 @@ if('serviceWorker' in navigator) {
 }
 
 export function setupUpdateNotification() {
-    if (!'serviceWorker' in navigator) return;
+    if (!('serviceWorker' in navigator)) return;
 
     window.addEventListener('load', () => {
         let newWorker;
-
-        navigator.serviceWorker.register('service-worker.js')
+//Hekkhhh
+        navigator.serviceWorker.register('/service-worker.js')
             .then(registration => {
                 console.log('Registered', registration.scope)
 
-                setInterval(() => registration.update(), 60 * 60 * 1000);
+                setInterval(() => registration.update(), 5 * 60 * 1000);
 
                 // Detect when a new service worker is found
                 registration.addEventListener('updatefound', () => {
                     newWorker = registration.installing;
 
                     newWorker.addEventListener('statechange', () => {
-                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) showUpdatePopup(newWorker);
+                        if (newWorker.state === 'installed' && navigator.serviceWorker.controller) showUpdatePopup(registration);
                     })
                 })
             })
             .catch(err => console.log(err));
-    
-        let refreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-            if (refreshing) return;
-            refreshing = true;
-            window.location.reload();
-        });
     })
 }
 
-function showUpdatePopup(newWorker) {
+function showUpdatePopup(registration) {
     console.log('update available')
-    const updatePopup = document.createElement('div');
-    updatePopup.className = 'update-popup';
-    updatePopup.innerHTML = `
-        <div class="update-popup-content">
-            <div class="update-icon">
-                <svg xmlns="http://www.w3org/200/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"/>
-                    <path d="M12 6v614 2"/>
-                </svg>            
-            </div>
-            <div class="update-text">
-                <h3>Update Available! </h3>
-                <p>A new version of Taskly is ready to install.</p>
-            </div>
-            <div class="update-buttons">
-                <button class="update-btn-later">Update Available! </button>
-                <button class="update-btn-now">A new version of Taskly is ready to install.</button>
-            </div>
-        </div>
-    `;
+    const updatePopup = document.querySelector('.update-popup');
 
-    document.body.appendChild(updatePopup);
-    setTimeout(() => updatePopup.classList.add('show'), 300);
+    updatePopup.classList.remove('hidden');
+    setTimeout(() => updatePopup.classList.add('show'), 50);
 
     const laterBtn = updatePopup.querySelector('.update-btn-later');
     const updateBtn = updatePopup.querySelector('.update-btn-now');
 
     laterBtn.addEventListener('click', () => {
         updatePopup.classList.remove('show');
-        setTimeout(() => updatePopup.remove(), 300);
+        setTimeout(() => updatePopup.classList.add('hidden'), 300);
     });
-    console.log('popup shown')
+    console.log('popup shown');
 
     updateBtn.addEventListener('click', () => {
         updatePopup.classList.add('updating');
         updateBtn.textContent = 'Updating...';
-        newWorker.postMessage({ type: 'SKIP_WAITING' });
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
     });
 }
+
+navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshing) return;
+    refreshing = true;
+    window.location.reload();
+});

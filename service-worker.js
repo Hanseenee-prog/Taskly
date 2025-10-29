@@ -1,4 +1,4 @@
-const CACHE_NAME = 'taskly-v1.0.1';
+const CACHE_NAME = 'taskly-v1.0.2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -53,7 +53,7 @@ self.addEventListener('install', e => {
           }
         }
 
-        return self.skipWaiting();
+        // return self.skipWaiting();
       })
   );
 });
