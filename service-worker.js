@@ -13,7 +13,7 @@ const urlsToCache = [
   '/scripts/taskControls.js',
   '/scripts/tasks.js',
   '/scripts/toggleBtn.js',
-  '/scripts/display/addorUpdateTask.js',
+  '/scripts/display/addOrUpdateTask.js',
   '/scripts/display/displayTasks.js',
   '/scripts/display/notification.js',
   '/scripts/display/popups.js',
